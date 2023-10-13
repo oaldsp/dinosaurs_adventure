@@ -3,34 +3,34 @@
 #include <iostream>
 using namespace std;
 
-template <typename TIPO>//para tornar a funcao mais generica.
+template <typename TYPE>//para tornar a funcao mais generica.
 class Coord{
 private:
-       	TIPO x;
-	TIPO y;
+       	TYPE x;
+	TYPE y;
 public:
-	Coord(TIPO x,TIPO y);
+	Coord(TYPE x,TYPE y);
 	Coord();
 	~Coord();
 	
-	TIPO getX();
-	TIPO getY();
+	TYPE getX();
+	TYPE getY();
 
 	//operadores para facilitar a utilizacao das coordenadas.
 	//sem retorno.
-	void operator=(Coord<TIPO> temp);
-       	void operator+=(Coord<TIPO> temp);
-	void operator-=(Coord<TIPO> temp);
+	void operator=(Coord<TYPE> temp);
+       	void operator+=(Coord<TYPE> temp);
+	void operator-=(Coord<TYPE> temp);
 	void operator*=(double k);
 	void operator/=(double k);
 	
 	//com retorno coord.
-	Coord<TIPO> operator+(Coord<TIPO> temp);
-	Coord<TIPO> operator-(Coord<TIPO> temp);
-	Coord<TIPO> operator*(Coord<TIPO> temp);
-	Coord<TIPO> operator*(double k);
-	Coord<TIPO> operator/(Coord<TIPO> tem);
-	Coord<TIPO> operator/(double k);
+	Coord<TYPE> operator+(Coord<TYPE> temp);
+	Coord<TYPE> operator-(Coord<TYPE> temp);
+	Coord<TYPE> operator*(Coord<TYPE> temp);
+	Coord<TYPE> operator*(double k);
+	Coord<TYPE> operator/(Coord<TYPE> tem);
+	Coord<TYPE> operator/(double k);
 };
 
 typedef Coord<double> CoordD;
@@ -38,48 +38,48 @@ typedef Coord<float> CoordF;
 typedef Coord<int> CoordI;
 typedef Coord<unsigned int> CoordU;
 
-template <typename TIPO>
-Coord<TIPO>::Coord(TIPO x, TIPO y):x(x),y(y){}
+template <typename TYPE>
+Coord<TYPE>::Coord(TYPE x, TYPE y):x(x),y(y){}
 
-template <typename TIPO>
-Coord<TIPO>::Coord(){
+template <typename TYPE>
+Coord<TYPE>::Coord(){
 	x=0;
 	y=0;
 }
 
-template <typename TIPO>
-Coord<TIPO>::~Coord(){}
+template <typename TYPE>
+Coord<TYPE>::~Coord(){}
 
-template <typename TIPO>
-TIPO Coord<TIPO>::getX(){
+template <typename TYPE>
+TYPE Coord<TYPE>::getX(){
 	return x;
 }
 
-template <typename TIPO>
-TIPO Coord<TIPO>::getY(){
+template <typename TYPE>
+TYPE Coord<TYPE>::getY(){
 	return y;
 }
 
-template <typename TIPO>
-void Coord<TIPO>::operator=(Coord<TIPO> temp){
+template <typename TYPE>
+void Coord<TYPE>::operator=(Coord<TYPE> temp){
 	x=temp.x;
 	y=temp.y;
 }
 
-template <typename TIPO>
-void Coord<TIPO>::operator+=(Coord<TIPO> temp){
+template <typename TYPE>
+void Coord<TYPE>::operator+=(Coord<TYPE> temp){
 	x+=temp.x;
 	y+=temp.y;
 }
 
-template <typename TIPO>
-void Coord<TIPO>::operator-=(Coord<TIPO> temp){
+template <typename TYPE>
+void Coord<TYPE>::operator-=(Coord<TYPE> temp){
 	x-=temp.x;
 	y-=temp.y;
 }
 
-template <typename TIPO>
-void Coord<TIPO>::operator*=(double k){
+template <typename TYPE>
+void Coord<TYPE>::operator*=(double k){
 	//vendo se o divisor nao e zero. 
 	if(k == 0.0f){
 		cout<< "Erro(dividindo por 0)" <<endl;
@@ -89,50 +89,50 @@ void Coord<TIPO>::operator*=(double k){
 	y= k*y;
 } 
 
-template <typename TIPO>
-void Coord<TIPO>::operator/=(double k){
+template <typename TYPE>
+void Coord<TYPE>::operator/=(double k){
 	x= x/k;
 	y= y/k;
 }
 
-template <typename TIPO>
-Coord<TIPO> Coord<TIPO>::operator+(Coord<TIPO> temp){
-	return Coord<TIPO>(x+temp.x,y+temp.y);
+template <typename TYPE>
+Coord<TYPE> Coord<TYPE>::operator+(Coord<TYPE> temp){
+	return Coord<TYPE>(x+temp.x,y+temp.y);
 }
 
-template <typename TIPO>
-Coord<TIPO> Coord<TIPO>::operator-(Coord<TIPO> temp){
-	return Coord<TIPO>(x-temp.x,y-temp.y);
+template <typename TYPE>
+Coord<TYPE> Coord<TYPE>::operator-(Coord<TYPE> temp){
+	return Coord<TYPE>(x-temp.x,y-temp.y);
 }
 
-template <typename TIPO>
-Coord<TIPO> Coord<TIPO>::operator*(Coord<TIPO> temp){
-	return Coord<TIPO>(x*temp.x,y*temp.y);
+template <typename TYPE>
+Coord<TYPE> Coord<TYPE>::operator*(Coord<TYPE> temp){
+	return Coord<TYPE>(x*temp.x,y*temp.y);
 }
 
-template <typename TIPO>
-Coord<TIPO> Coord<TIPO>::operator*(double k){
-	return Coord<TIPO>(k*x,k*y);
+template <typename TYPE>
+Coord<TYPE> Coord<TYPE>::operator*(double k){
+	return Coord<TYPE>(k*x,k*y);
 }
 
-template <typename TIPO>
-Coord<TIPO> Coord<TIPO>::operator/(Coord<TIPO> temp){
+template <typename TYPE>
+Coord<TYPE> Coord<TYPE>::operator/(Coord<TYPE> temp){
 	//vendo se nenhuma das coordenas que vai dividir e zero
 	if(temp.x == 0.0f || temp.Y == 0.0f){
 		cout << "Erro(dividindo por 0)" << endl;	
 		exit(1);
 	}
-	return Coord<TIPO>(x/temp.x,y/temp.y);
+	return Coord<TYPE>(x/temp.x,y/temp.y);
 }
 
-template <typename TIPO>
-Coord<TIPO> Coord<TIPO>::operator/(double k){
+template <typename TYPE>
+Coord<TYPE> Coord<TYPE>::operator/(double k){
 	//vendo se o divisor nao e zero
 	if(k == 0.0f){
 		cout<< "Erro(dividindo por 0)" <<endl;
  		exit(1);
 	}
-	return Coord<TIPO>(x/k, y/k);
+	return Coord<TYPE>(x/k, y/k);
 }
 
 
