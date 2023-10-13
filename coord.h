@@ -13,8 +13,8 @@ public:
 	Coord();
 	~Coord();
 	
-	TYPE getX();
-	TYPE getY();
+	const TYPE getX() const;
+	const TYPE getY() const;
 
 	//operadores para facilitar a utilizacao das coordenadas.
 	//sem retorno.
@@ -51,12 +51,12 @@ template <typename TYPE>
 Coord<TYPE>::~Coord(){}
 
 template <typename TYPE>
-TYPE Coord<TYPE>::getX(){
+const TYPE Coord<TYPE>::getX() const{
 	return x;
 }
 
 template <typename TYPE>
-TYPE Coord<TYPE>::getY(){
+const TYPE Coord<TYPE>::getY() const{
 	return y;
 }
 

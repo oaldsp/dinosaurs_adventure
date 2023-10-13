@@ -1,2 +1,2 @@
 all:
-	g++ entity.cpp coord.h main.cpp -o play -lsfml-graphics -lsfml-window -lsfml-system 	
+	g++ entity.cpp player.cpp game.cpp main.cpp coord.h -o play -lsfml-graphics -lsfml-window -lsfml-system 	
