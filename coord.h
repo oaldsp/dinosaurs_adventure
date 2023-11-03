@@ -5,10 +5,11 @@ using namespace std;
 
 template <typename TYPE>//para tornar a funcao mais generica.
 class Coord{
-private:
-       	TYPE x;
-	TYPE y;
+	private:
 public:
+	TYPE x;
+	TYPE y;
+
 	Coord(TYPE x,TYPE y);
 	Coord();
 	~Coord();
