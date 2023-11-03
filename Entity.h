@@ -1,6 +1,7 @@
 #pragma once 
 
-#include "coord.h"
+#include "Coord.h"
+#include "StaticAnimation.h"
 
 enum ID{
 	empty,

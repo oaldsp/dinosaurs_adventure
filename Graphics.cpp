@@ -3,6 +3,11 @@
 #include <cstring>
 #include <iostream>
 
+/*
+	Codigo reutilizado de "Burda Canal"
+	Link: https://youtu.be/RFSOXXsm4Ug?si=ADNre21NtIXd3c5n
+*/
+
 #define WIDTH 1280
 #define HEIGHT 720
 
@@ -140,9 +145,11 @@ namespace Managers {
         return window;
     }
 
-    void Graphics::updateDeltaTime(){
+    float Graphics::updateDeltaTime(){
     	dT = clk.getElapsedTime().asSeconds();
-	clk.restart(); 	
+	clk.restart();
+	
+	return dT;
     }
 
 } // namespace Managers

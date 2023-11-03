@@ -1,4 +1,4 @@
-#include "entity.h"
+#include "Entity.h"
 
 Entity::Entity(CoordF posTemp, CoordF sizeTemp, ID idTemp){
 	pos  = posTemp;

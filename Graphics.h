@@ -1,9 +1,14 @@
 #pragma once
 
-#include "coord.h"
+#include "Coord.h"
 #include <SFML/Graphics.hpp>
 
 #include <map>
+
+/*
+	Codigo reutilizado de "Burda Canal"
+	Link: https://youtu.be/RFSOXXsm4Ug?si=ADNre21NtIXd3c5n 
+*/
 
 namespace Managers {
 
@@ -49,11 +54,9 @@ namespace Managers {
 
         sf::Font* loadFont(const char* path);
 
-        //float updateDeltaTime();
+        float updateDeltaTime();
 
         sf::RenderWindow* getWindow() const;
-
-	void updateDeltaTime();
     };
 
 } // namespace Managers
