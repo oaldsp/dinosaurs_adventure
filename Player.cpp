@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Player.h"
 
 Player::Player(CoordF  posTemp, bool isP1Temp):
