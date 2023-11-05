@@ -5,8 +5,8 @@
 #define P_SIZE_X  100.0f
 #define P_SIZE_Y  100.0f
 #define LIFE	  100.0f
-#define P_SPEED_X 10.0f
-#define P_SPEED_Y -10.0f	
+#define P_SPEED_X 50.0f
+#define P_SPEED_Y 30.0f	
 
 namespace Entities{
 

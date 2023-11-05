@@ -4,7 +4,7 @@ namespace Entities{
 
 	MoveEntity::MoveEntity(CoordF posTemp, CoordF sizeTemp, ID idTemp):
 	Entity(posTemp, sizeTemp, empty), live(true),
-	shape(posTemp, sizeTemp, 1.0f){}
+	shape(posTemp, sizeTemp){}
 
 	void MoveEntity::plot(){
 		shape.plot();		
@@ -18,8 +18,7 @@ namespace Entities{
 		live = temp;
 	}
 		
-	StaticAnimation MoveEntity::getShape(){
-		printf("1");
-		return shape;
+	StaticAnimation* MoveEntity::getShape(){
+		return &shape;
 	}
 }//Final do namespace Entities

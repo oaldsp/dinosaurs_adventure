@@ -9,11 +9,11 @@ namespace Entities{
 	private:
 		StaticAnimation shape;
 	public:
-		StaticEntity(CoordF posTemp, CoordF sizeTemp, ID idTemp = empty);
+		StaticEntity(CoordF posTemp, CoordF sizeTemp, ID idTemp);
 		~StaticEntity() =  default;
 
 		void plot();
-		StaticAnimation getShape();
+		StaticAnimation* getShape();
 
 		//metodos virtuais puros 
 		virtual void start() = 0;

@@ -17,7 +17,7 @@ namespace Entities{
 			//metodos virtuais puros
 			void move(float dT);
 			void start();
-			virtual void collision(Entity* slamEntity, CoordF difference) = 0;
+			void collision(Entity* slamEntity, CoordF difference);
 		};
 	}//final do namespace Obstacles
 }//final do namespace Entity

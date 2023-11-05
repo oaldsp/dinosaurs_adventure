@@ -9,11 +9,15 @@ namespace Entities{
 		}
 
 		void Ground::move(float dT){
-			this->getShape().updatePos(getPos());
+			this->getShape()->updatePos(getPos());
 		}
 
 		void Ground::start(){
-			this->getShape().setTexture("texture/player.png");
+			this->getShape()->setTexture("texture/ground.jpg");
+		}
+
+		void Ground::collision(Entity* slamEntity, CoordF difference){
+		
 		}
 	}//final do namespace Obstacles
 }//final do namespace Entities 

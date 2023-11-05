@@ -16,7 +16,7 @@ namespace Entities{
 		void plot();
 		bool getLive();
 		void setLive(bool temp);
-		StaticAnimation getShape();
+		StaticAnimation* getShape();
 
 		//metodos virtuais puros 
 		virtual void move(float dT) = 0;

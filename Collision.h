@@ -23,7 +23,7 @@ namespace Managers {
         //States::Level* plvl;
 
     public:
-        Collision(List::EntityList* movingEntities, List::EntityList* staticEntities, States::Level* plvl);
+        Collision(List::EntityList* movingEntities, List::EntityList* staticEntities/*, States::Level* plvl*/);
 
         ~Collision();
 

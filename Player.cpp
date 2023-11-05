@@ -12,12 +12,12 @@ namespace Entities{
 	void Player::move(float dT){
 		CoordF posTemp = this->getPos();
 		time += dT;
-		this->getShape().updatePos(posTemp);
-			this->setPos(CoordF(posTemp.x +  200*dT, posTemp.y));
+		this->getShape()->updatePos(posTemp);
+		this->setPos(CoordF(posTemp.x +  P_SPEED_X*dT, posTemp.y + P_SPEED_Y*dT));
 	}
 
 	void Player::start(){
-		//(((MoveEntity*)this)->getShape()).setTexture("texture/player.png");
+		this->getShape()->setTexture("texture/player.png");
 	}
 
 	void Player::collision(Entity* slamEntity, CoordF difference){
