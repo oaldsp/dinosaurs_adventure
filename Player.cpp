@@ -1,25 +1,38 @@
-#pragma once
-
 #include "Player.h"
 
-Player::Player(CoordF  posTemp, bool isP1Temp):
-Entity(posTemp, CoordF(P_SIZE_X,P_SIZE_Y), player),
-shape("texture/player.png", posTemp, CoordF(100,100) ,1),	
-isP1(isP1Temp){
-	start();
-	time=0;
-}
+namespace Entities{
 
-void Player::plot(){
-	shape.plot();
-}
+	Player::Player(CoordF  posTemp, bool isP1Temp):
+	Creature(posTemp, CoordF(P_SIZE_X,P_SIZE_Y), player, LIFE, CoordF(P_SPEED_X,P_SPEED_Y)),
+	isP1(isP1Temp){
+		start();
+		time=0;
+	}
 
-void Player::move(float dT){
-	time += dT;
-	shape.updatePos(getPos());
-	setPos(CoordF(getPos().x +  200*dT,getPos().y));
-}
+	void Player::move(float dT){
+		CoordF posTemp = this->getPos();
+		time += dT;
+		this->getShape()->updatePos(posTemp);
+		if(time < 10.0f)
+			this->setPos(CoordF(posTemp.x +  P_SPEED_X*dT, posTemp.y + P_SPEED_Y*dT));
+		else if (time < 20.0f)
+			this->setPos(CoordF(posTemp.x -  P_SPEED_X*dT, posTemp.y + P_SPEED_Y*dT));
+		else	
+			time = 0;
+		
+	}
 
-void Player::start(){
-	//shape("texture/player.png", posTemp, CoordF(100,100) ,1);
-}
+	void Player::start(){
+		this->getShape()->setTexture("texture/player.png");
+	}
+
+	void Player::collision(Entity* slamEntity, CoordF difference){
+		switch(slamEntity->getID()){ 
+		case ground:
+			moveAway(slamEntity,difference);
+			break;
+		default:
+			break;
+		}	
+	}
+}//Final no namespace Entities

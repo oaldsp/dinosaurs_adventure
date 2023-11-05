@@ -1,4 +1,4 @@
-#pragma once //evitar que o arquivo seja incluido mais de uma vez.
+#pragma once
 
 #include <iostream>
 using namespace std;
@@ -135,6 +135,3 @@ Coord<TYPE> Coord<TYPE>::operator/(double k){
 	}
 	return Coord<TYPE>(x/k, y/k);
 }
-
-
-	
