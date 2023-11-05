@@ -10,17 +10,27 @@ namespace Entities{
 		CoordF posThis = this->getPos();
 
 		if(difference.x > difference.y){//bateu em x
-			if(posThis.x > slamPos.x)
-				posThis.x -=  difference.x;
-			else
-				posThis.x += difference.x;
-			speed.x =  0.0f;
+			if(posThis.x < slamPos.x){//na esquerda
+				//for(int i=0; i<10; i++)
+				//	printf("A|");
+				this->setPos(CoordF(posThis.x + difference.x, posThis.y));
+			}else{
+				//for(int i=0; i<10; i++)
+				//	printf("B|");
+				this->setPos(CoordF(posThis.x - difference.x, posThis.y));
+			}
+			speed.x = 0.0f;
 		}else{//bateu em y
-			if(posThis.y > slamPos.y)
-				posThis.y -=  difference.y;
-			else
-				posThis.y += difference.y;
-			speed.y =  0.0f;
+			if(posThis.y < slamPos.y){//em cima
+				//for(int i=0; i<10; i++)
+				//	printf("C|");
+				this->setPos(CoordF(posThis.x, posThis.y + difference.y));
+			}else{
+				//for(int i=0; i<10; i++)
+				//	printf("D|");
+				this->setPos(CoordF(posThis.x, posThis.y - difference.y));
+			}
+			speed.y = 0.0f;
 		}
 	}
 

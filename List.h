@@ -19,7 +19,7 @@ namespace List{
 			pNext = NULL;
 			pData  = NULL;
 			}
-			void setNext(Element* pTemp){pNext = pTemp;}
+			void setNext(Element<TE>* pTemp){pNext = pTemp;}
 			Element<TE>* getNext(){ return pNext;}
 			void setData(TE*  pTemp){pData = pTemp;}
 			TE*  getData(){return pData;}
@@ -65,7 +65,7 @@ namespace List{
 
 	template<class TL>
 	List<TL>::~List(){
-		clear();
+		//clear();
 	}
 
 	template<class TL>
@@ -94,7 +94,7 @@ namespace List{
 		
 	template<class TL>
 	void List<TL>::push(TL* pTemp){
-		if(pTemp !=NULL){
+		if(pTemp != NULL){	
 			Element<TL>* pElement = new Element<TL>();
 			pElement->setData(pTemp);
 			setElement(pElement);
@@ -108,7 +108,7 @@ namespace List{
 
 		Element<TL>* pTemp = pFirst;
 
-		for(unsigned int i; i<pos; i++)
+		for(unsigned int i=0; i<pos; i++)
 			pTemp = pTemp->getNext();
 		
 		return pTemp->getData();

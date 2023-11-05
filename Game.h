@@ -20,7 +20,9 @@ private:
 	
 	//objetos
 	Entities::Player p1;
-	Entities::Obstacles::Ground g1; 
+	Entities::Obstacles::Ground g1;
+	Entities::Obstacles::Ground w1; 
+	Entities::Obstacles::Ground w2; 
 public:
 	Game();
 	~Game() = default;

@@ -13,7 +13,13 @@ namespace Entities{
 		CoordF posTemp = this->getPos();
 		time += dT;
 		this->getShape()->updatePos(posTemp);
-		this->setPos(CoordF(posTemp.x +  P_SPEED_X*dT, posTemp.y + P_SPEED_Y*dT));
+		if(time < 10.0f)
+			this->setPos(CoordF(posTemp.x +  P_SPEED_X*dT, posTemp.y + P_SPEED_Y*dT));
+		else if (time < 20.0f)
+			this->setPos(CoordF(posTemp.x -  P_SPEED_X*dT, posTemp.y + P_SPEED_Y*dT));
+		else	
+			time = 0;
+		
 	}
 
 	void Player::start(){

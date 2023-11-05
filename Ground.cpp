@@ -2,8 +2,8 @@
 
 namespace Entities{
 	namespace Obstacles{
-		Ground::Ground(CoordF  posTemp):
-		StaticEntity(posTemp, CoordF(SIZE_X,SIZE_Y), ground)
+		Ground::Ground(CoordF  posTemp, CoordF sizeTemp):
+		StaticEntity(posTemp, sizeTemp, ground)
 		{
 			start();
 		}
@@ -17,7 +17,7 @@ namespace Entities{
 		}
 
 		void Ground::collision(Entity* slamEntity, CoordF difference){
-		
+			printf("Bateu");	
 		}
 	}//final do namespace Obstacles
 }//final do namespace Entities 

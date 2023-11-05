@@ -2,7 +2,6 @@
 
 #include "MoveEntity.h"
 
-
 namespace Entities{
 	class Creature: public MoveEntity{
 	private:
