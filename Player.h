@@ -1,21 +1,25 @@
 #pragma once
 
-#include "Entity.h"
+#include "Creature.h"
 
-#define P_SIZE_X 100.0f
-#define P_SIZE_Y 100.0f
+#define P_SIZE_X  100.0f
+#define P_SIZE_Y  100.0f
+#define LIFE	  100.0f
+#define P_SPEED_X 10.0f
+#define P_SPEED_Y -10.0f	
 
-class Player: public Entity{
-private:
-	const bool isP1;//flag para saber se eh jogador 1
- 	float time;
-	StaticAnimation shape;	
-public:
-	Player(CoordF posTemp = CoordF(0.0f, 0.0f), bool isP1Temp = true);
-	virtual ~Player() = default;
+namespace Entities{
 
-	//metodos virtuais
-	void plot();
-	void move(float dT);
-	void start();
-};
+	class Player: public Creature{
+	private:
+		const bool isP1;//flag para saber se eh jogador 1
+		float time;	
+	public:
+		Player(CoordF posTemp = CoordF(0.0f, 0.0f), bool isP1Temp = true);
+		virtual ~Player() = default;
+
+		void move(float dT);
+		void start();
+		void collision(Entity* slamEntity, CoordF difference);
+	};
+}//Final do namespace Entities

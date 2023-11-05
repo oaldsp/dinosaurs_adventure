@@ -3,6 +3,8 @@
 #include "Entity.h"
 #include "List.h"
 
+using namespace Entities;
+
 namespace List{
 
 	class EntityList{

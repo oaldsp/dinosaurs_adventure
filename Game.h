@@ -5,13 +5,14 @@
 #include "StaticAnimation.h"
 
 class Game{
-private:
+private: 
 	Managers::Graphics* pGrap; 
-	Player p1;
-	StaticAnimation background;
+	Entities::Player p1;
+	StaticAnimation background; 
 public:
 	Game();
 	~Game() = default;
 	
+	void start();	
 	void exe();
 }; 
