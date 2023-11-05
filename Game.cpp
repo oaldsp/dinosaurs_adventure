@@ -13,8 +13,6 @@ background(CoordF(0.0f,0.0f), CoordF(1280,720), 1){
 void Game::start(){
 	background.setTexture("texture/background.jpg");
 	(p1.getShape()).setTexture("texture/player.png");
-	Entities::MoveEntity a;
-	a.getShape;
 }
 
 void Game::exe(){
