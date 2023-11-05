@@ -52,14 +52,16 @@ namespace Managers {
             for (j = i + 1; j < movingEntities->getSize(); j++) {
                 ent1 = (*movingEntities)[i];
                 ent2 = (*movingEntities)[j];
-
+		//printf("|%d,%d|", i, j);	
                 centerDistance.x = ent2->getPos().x - ent1->getPos().x;
                 centerDistance.y = ent2->getPos().y - ent1->getPos().y;
 
                 intersect.x = fabs(centerDistance.x) - (ent1->getSize().x / 2.0f + ent2->getSize().x / 2.0f);
                 intersect.y = fabs(centerDistance.y) - (ent1->getSize().y / 2.0f + ent2->getSize().y / 2.0f);
 
-                if (intersect.x < 0.0f && intersect.y < 0.0f) { // Condition to collide...
+                if (intersect.x < 0.0f && intersect.y < 0.0f) { // Condition to collide..
+		    //for(int i=0;i<100000;i++)
+		        //printf("Bateu em outro");
                     ent2->collision(ent1, intersect);
                     ent1->collision(ent2, intersect);
                 }

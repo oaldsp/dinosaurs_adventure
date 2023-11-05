@@ -7,6 +7,7 @@ namespace Entities{
 
 	enum ID{
 		empty,
+		chicken,
 		player,
 		ground,
 		coin
@@ -32,7 +33,7 @@ namespace Entities{
 
 		//metodos virtuais
 		virtual void plot() = 0;//plotar entity na tela
-		virtual void move(float temp) = 0;//mover entity
+		virtual void move(float dT) = 0;//mover entity
 		virtual void start() = 0;//inicializar entity
 		virtual void collision(Entity* slamEntity, CoordF difference) = 0;
 	};
