@@ -18,6 +18,8 @@ void StaticAnimation::updatePos(CoordF pos){
 
 void StaticAnimation::plot(){
 	Managers::Graphics::getInstance()->render(&body);
+	body.setOutlineThickness(3);
+	body.setOutlineColor(sf::Color(255, 0, 0));
 }
 
 void StaticAnimation::setTexture(const char* directory){

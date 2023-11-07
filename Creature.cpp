@@ -1,4 +1,5 @@
 #include "Creature.h"
+#include <math.h>
 
 namespace Creature{
 	namespace Entities{
@@ -24,8 +25,8 @@ namespace Creature{
 				speed.x = 0.0f;
 			}else{//bateu em y
 				if(posThis.y < slamPos.y){//em cima
-					//for(int i=0; i<10; i++)
-					//	printf("C|");
+					//for(int i=0; i<1; i++)
+					//	printf("%f\n", difference.y);
 					this->setPos(CoordF(posThis.x, posThis.y + difference.y));
 				}else{
 					//for(int i=0; i<10; i++)

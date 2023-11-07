@@ -5,8 +5,8 @@
 #define C_SIZE_X  25.0f
 #define C_SIZE_Y  25.0f
 #define C_LIFE	  100.0f
-#define C_SPEED_X 90.0f
-#define C_SPEED_Y 0.0f	
+#define C_SPEED_X 70.0f
+#define C_SPEED_Y 40.0f	
 
 namespace Creature{
 	namespace Entities{
