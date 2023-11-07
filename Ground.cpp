@@ -16,8 +16,7 @@ namespace Entities{
 			this->getShape()->setTexture("texture/ground.jpg");
 		}
 
-		void Ground::collision(Entity* slamEntity, CoordF difference){
-			printf("Bateu");	
+		void Ground::collision(Entity* slamEntity, CoordF difference){	
 		}
 	}//final do namespace Obstacles
 }//final do namespace Entities 

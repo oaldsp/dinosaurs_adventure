@@ -3,7 +3,7 @@
 namespace Entities{
 
 	MoveEntity::MoveEntity(CoordF posTemp, CoordF sizeTemp, ID idTemp):
-	Entity(posTemp, sizeTemp, empty), live(true),
+	Entity(posTemp, sizeTemp, idTemp), live(true),
 	shape(posTemp, sizeTemp){}
 
 	void MoveEntity::plot(){

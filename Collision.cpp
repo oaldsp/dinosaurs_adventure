@@ -1,6 +1,7 @@
 #include "Collision.h"
 
 #include "MoveEntity.h"
+//#include "StaticEntity.h"
 #include <math.h>
 
 /*
@@ -33,12 +34,17 @@ namespace Managers {
                 ent1 = (*staticEntities)[i];
                 ent2 = (*movingEntities)[j];
 		//printf("|%d,%d|", i, j);	
-                centerDistance.x = ent2->getPos().x - ent1->getPos().x;
-                centerDistance.y = ent2->getPos().y - ent1->getPos().y;
+                centerDistance.x = (ent2->getPos().x + ent2->getSize().x / 2.0f) - (ent1->getPos().x + ent1->getSize().x / 2.0f);
+		//if(centerDistance.x<0.0f){ 
+		//	centerDistance.x*=-1;
+		//	
+		//printf("AAAAA");
+		//}	
+                centerDistance.y = (ent2->getPos().y + ent2->getSize().y / 2.0f) - (ent1->getPos().y + ent1->getSize().y / 2.0f);
 
                 intersect.x = fabs(centerDistance.x) - (ent1->getSize().x / 2.0f + ent2->getSize().x / 2.0f);
-                intersect.y = fabs(centerDistance.y) - (ent1->getSize().y / 2.0f + ent2->getSize().y / 2.0f);
-			
+                intersect.y = fabs(centerDistance.y) - (ent1->getSize().y / 2.0f + ent2->getSize().y / 2.0f);	
+		//printf("|%.0f,%.0f|",centerDistance.x,centerDistance.y);
                 if (intersect.x < 0.0f && intersect.y < 0.0f) { // Condition to collide...
 			//for(int i=0;i<100000;i++)
 			//	printf("Bateu");
@@ -52,14 +58,16 @@ namespace Managers {
             for (j = i + 1; j < movingEntities->getSize(); j++) {
                 ent1 = (*movingEntities)[i];
                 ent2 = (*movingEntities)[j];
-
-                centerDistance.x = ent2->getPos().x - ent1->getPos().x;
-                centerDistance.y = ent2->getPos().y - ent1->getPos().y;
+		//printf("|%d,%d|", i, j);	
+                centerDistance.x = (ent2->getPos().x + ent2->getSize().x / 2.0f) - (ent1->getPos().x + ent1->getSize().x / 2.0f);
+                centerDistance.y = (ent2->getPos().y + ent2->getSize().y / 2.0f) - (ent1->getPos().y + ent1->getSize().y / 2.0f);
 
                 intersect.x = fabs(centerDistance.x) - (ent1->getSize().x / 2.0f + ent2->getSize().x / 2.0f);
                 intersect.y = fabs(centerDistance.y) - (ent1->getSize().y / 2.0f + ent2->getSize().y / 2.0f);
 
-                if (intersect.x < 0.0f && intersect.y < 0.0f) { // Condition to collide...
+                if (intersect.x < 0.0f && intersect.y < 0.0f) { // Condition to collide..
+		    //for(int i=0;i<100000;i++)
+		        //printf("Bateu em outro");
                     ent2->collision(ent1, intersect);
                     ent1->collision(ent2, intersect);
                 }

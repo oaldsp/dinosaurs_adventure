@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Player.h"
+#include "Chicken.h"
 #include "Ground.h"
 #include "Graphics.h"
 #include "StaticAnimation.h"
@@ -18,8 +19,11 @@ private:
 	Managers::Graphics* pGrap; 	
 	StaticAnimation background; 
 	
-	//objetos
-	Entities::Player p1;
+	//objetos vivos
+	Creature::Entities::Player p1;
+	Creature::Entities::Chicken c1;
+	
+	//objetos fixos
 	Entities::Obstacles::Ground g1;
 	Entities::Obstacles::Ground w1; 
 	Entities::Obstacles::Ground w2; 
