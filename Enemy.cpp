@@ -3,8 +3,8 @@
 namespace Creature{
 	namespace Entities{
 
-		Enemy::Enemy(CoordF  posTemp, CoordF sizeTemp, ID idTemp, unsigned int lifeTemp, CoordF speedTemp):
-		Creature(posTemp, sizeTemp, idTemp, lifeTemp, speedTemp)
+		Enemy::Enemy(CoordF  posTemp, CoordF sizeTemp):
+		Creature(posTemp, sizeTemp)
 		{
 			//start();
 			time=0;

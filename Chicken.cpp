@@ -4,7 +4,11 @@ namespace Creature{
 	namespace Entities{
 
 		Chicken::Chicken(CoordF  posTemp):
-		Enemy(posTemp, CoordF(C_SIZE_X, C_SIZE_Y), chicken, C_LIFE, CoordF(C_SPEED_X, C_SPEED_Y)){
+		Enemy(posTemp, CoordF(C_SIZE_X, C_SIZE_Y)){
+			this->getShape()->setTexture("texture/chicken.png");
+			this->setID(chicken);
+			this->setLife(C_LIFE);
+			this->setSpeedX(C_SPEED_X);
 			start();
 			time=0;
 		}
@@ -23,7 +27,7 @@ namespace Creature{
 		}
 
 		void Chicken::start(){
-			this->getShape()->setTexture("texture/chicken.png");
+			
 		}
 
 		void Chicken::collision(Entity* slamEntity, CoordF difference){

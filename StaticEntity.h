@@ -9,7 +9,7 @@ namespace Entities{
 	private:
 		StaticAnimation shape;
 	public:
-		StaticEntity(CoordF posTemp, CoordF sizeTemp, ID idTemp);
+		StaticEntity(CoordF posTemp, CoordF sizeTemp);
 		~StaticEntity() =  default;
 
 		void plot();

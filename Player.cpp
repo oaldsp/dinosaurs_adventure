@@ -3,10 +3,13 @@
 namespace Creature{
 	namespace Entities{
 
-		Player::Player(CoordF  posTemp, bool isP1Temp):
-		Creature(posTemp, CoordF(P_SIZE_X,P_SIZE_Y), player, P_LIFE, CoordF(P_SPEED_X,P_SPEED_Y)),
-		isP1(isP1Temp){
-			start();
+		Player::Player(CoordF  posTemp):
+		Creature(posTemp, CoordF(P_SIZE_X,P_SIZE_Y)),
+		isP1(true){
+			this->getShape()->setTexture("texture/player.png");
+			this->setID(player);
+			this->setLife(P_LIFE);
+			this->setSpeedX(P_SPEED_X);
 			time=0;
 		}
 
@@ -33,7 +36,7 @@ namespace Creature{
 		}
 
 		void Player::start(){
-			this->getShape()->setTexture("texture/player.png");
+		
 		}
 
 		void Player::collision(Entity* slamEntity, CoordF difference){

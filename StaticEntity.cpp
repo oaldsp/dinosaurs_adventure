@@ -2,8 +2,8 @@
 
 namespace Entities{
 
-	StaticEntity::StaticEntity(CoordF posTemp, CoordF sizeTemp , ID idTemp):
-	Entity(posTemp, sizeTemp, idTemp),
+	StaticEntity::StaticEntity(CoordF posTemp, CoordF sizeTemp):
+	Entity(posTemp),
 	shape(posTemp, sizeTemp){}
 
 	void StaticEntity::plot(){

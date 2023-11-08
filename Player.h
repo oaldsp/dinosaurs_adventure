@@ -16,7 +16,7 @@ namespace Creature{
 			const bool isP1;//flag para saber se eh jogador 1
 			float time;	
 		public:
-			Player(CoordF posTemp = CoordF(0.0f, 0.0f), bool isP1Temp = true);
+			Player(CoordF posTemp = CoordF(0.0f, 0.0f));
 			virtual ~Player() = default;
 			
 			void damage(unsigned int damage);
