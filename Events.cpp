@@ -7,7 +7,7 @@ Events::Events():
 pGrap(Managers::Graphics::getInstance()),
 pInput(Input::getInstance()),
 pWindow(NULL){	
-	if(NULL == pGrap)
+	if(NULL != pGrap)
 		pWindow = pGrap->getWindow();
 }
 
@@ -23,7 +23,7 @@ Events* Events::getInstance(){
 	return instance;
 }
 
-void Events::LibraryEvents(){
+void Events::libraryEvents(){
 	sf::Event event;
 	
 	while(pWindow->pollEvent(event)){

@@ -8,7 +8,8 @@ Input::Input(){
 	//movimentacao do player	
 	keysMap[sf::Keyboard::A] = "A";
 	keysMap[sf::Keyboard::W] = "W";
-	keysMap[sf::Keyboard::E] = "E";
+	keysMap[sf::Keyboard::S] = "S";
+	keysMap[sf::Keyboard::D] = "D";
 }
 
 Input::~Input(){

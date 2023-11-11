@@ -4,9 +4,9 @@ using namespace Managers;
 
 Game::Game():
 GC(&mE,&sE),
-events(Events::getInstance()),
+pEvents(Events::getInstance()),
 pGrap(Graphics::getInstance()),
-background(CoordF(0.0f,0.0f), CoordF(1280,720)),
+background(CoordF(-384.0f - 300.0f, 0.0f), CoordF(3*1366.0f, 768.0f)),
 p1(CoordF(300.f,250.f)),
 c1(CoordF(50.f,270.f)),
 g1(CoordF(0.0f,300.0f), CoordF(600.0f,50.0f)),
@@ -18,6 +18,8 @@ w2(CoordF(0.0f,250.0f), CoordF(50.0f,50.0f)){
 
 void Game::start(){
 	background.setTexture("texture/background.jpg");
+	
+	p1.getCtrl()->setKeys("W","A","D","S");
 
 	mE.addEntity(&p1);
 	mE.addEntity(&c1);
@@ -33,11 +35,12 @@ void Game::exe(){
 	while(pGrap->isWindowOpen()){
 		dt = pGrap->updateDeltaTime();
 		pGrap->clear();
-		
-		//pGrap->centerView(p1.getPos());
+		pGrap->centerView(CoordF(p1.getPos().x, 384.0f));
 
 		c1.move(dt);
+		p1.move(dt);
 
+		pEvents->libraryEvents();
 		GC.collide();
 
 		background.plot();

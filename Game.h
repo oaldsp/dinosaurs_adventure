@@ -17,7 +17,7 @@ private:
 	Managers::Collision GC;
 	
 	//Eventos
-	Events* events;
+	Events* pEvents;
 
 	//grafico	
 	Managers::Graphics* pGrap; 	

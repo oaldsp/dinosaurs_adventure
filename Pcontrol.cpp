@@ -31,10 +31,12 @@ void Pcontrol::released(std::string keyTemp){
 	if(NULL  != pPlayer){
 		//if(keyTemp == jump)
 			//keysBool[jump] = false;
-		//if(keyTemp == left)
+		if(keyTemp == left)
 			//keysBool[left] = false;
-		//if(keyTemp == right)
+			pPlayer->stop();
+		if(keyTemp == right)
 			//keysBool[right] = false;
+			pPlayer->stop();
 		//if(keyTemp == attack)
 			//keysBool[attack] = false;
 	}

@@ -16,5 +16,5 @@ public:
 	
 	static Events* getInstance();
 
-	void  LibraryEvents();// ve quais eventos a ibiblioteca chamou e repassa essas chamas para o gerenciador grafico
+	void  libraryEvents();// ve quais eventos a ibiblioteca chamou e repassa essas chamas para o gerenciador grafico
 };
