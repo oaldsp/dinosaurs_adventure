@@ -2,8 +2,6 @@
 
 #include "MoveEntity.h"
 
-#define G 30.0f
-
 using namespace Entities;
 
 namespace Entities{ 

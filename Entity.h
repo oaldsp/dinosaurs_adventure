@@ -3,6 +3,8 @@
 #include "Coord.h"
 #include "StaticAnimation.h"
 
+#define G 100.0f
+
 namespace Entities{
 
 	enum ID{

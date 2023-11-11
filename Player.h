@@ -7,8 +7,8 @@
 #define P_SIZE_X  80.0f
 #define P_SIZE_Y  50.0f
 #define P_LIFE	  100.0f
-#define P_SPEED_X 100.0f
-#define P_SPEED_Y 80.0f
+#define P_SPEED_X 300.0f
+#define P_SPEED_Y 20.0f
 
 namespace Entities{
 	namespace Creature{

@@ -16,14 +16,15 @@ namespace Entities{
 		void Chicken::move(float dT){
 			CoordF posTemp = this->getPos();
 			CoordF speedTemp = this->getSpeed();
+			
 			time += dT;
+			
 			this->getShape()->updatePos(posTemp);
-			if(time < 5.0f)
-				this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*dT));
-			else if (time < 10.0f)
-				this->setPos(CoordF(posTemp.x - speedTemp.x*dT, posTemp.y + speedTemp.y*dT));
-			else
-				time = 0;
+			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + G*time*time/2));
+			/*
+				USANDO FORMULA DE MRUV PARA DESLOCAMENTO EM Y
+				S=So+Vot+at^2/2
+			*/
 		}
 
 		void Chicken::start(){
@@ -33,6 +34,7 @@ namespace Entities{
 		void Chicken::collision(Entity* slamEntity, CoordF difference){
 			switch(slamEntity->getID()){ 
 			case ground:
+				time = 0.0f;//zero o tempo para o jump
 				moveAway(slamEntity,difference);
 				break;
 			default:
