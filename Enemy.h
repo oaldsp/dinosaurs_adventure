@@ -2,8 +2,8 @@
 
 #include "Creature.h"
 
-namespace Creature{
-	namespace Entities{
+namespace Entities{
+	namespace Creature{
 
 		class Enemy: public Creature{
 		private:
@@ -17,6 +17,6 @@ namespace Creature{
 			virtual void start() = 0;
 			virtual void collision(Entity* slamEntity, CoordF difference) = 0;
 		};
-	}//Final do namespace Entities
-}//Final do namespace Creature
+	}//Final do namespace Creature
+}//Final do namespace Entities
 

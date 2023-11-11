@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
-namespace Creature{
-	namespace Entities{
+namespace Entities{
+	namespace Creature{
 
 		Enemy::Enemy(CoordF  posTemp, CoordF sizeTemp):
 		Creature(posTemp, sizeTemp)
@@ -19,6 +19,6 @@ namespace Creature{
 				break;
 			}	
 		}
-	}//Final do namespace Entities
-}//Final do namespace Creature
+	}//Final do namespace Creature
+}//Final do namespace Entities
 

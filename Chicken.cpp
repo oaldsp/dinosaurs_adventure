@@ -1,7 +1,7 @@
 #include "Chicken.h"
 
-namespace Creature{
-	namespace Entities{
+namespace Entities{
+	namespace Creature{
 
 		Chicken::Chicken(CoordF  posTemp):
 		Enemy(posTemp, CoordF(C_SIZE_X, C_SIZE_Y)){
@@ -15,15 +15,15 @@ namespace Creature{
 
 		void Chicken::move(float dT){
 			CoordF posTemp = this->getPos();
+			CoordF speedTemp = this->getSpeed();
 			time += dT;
 			this->getShape()->updatePos(posTemp);
 			if(time < 5.0f)
-				this->setPos(CoordF(posTemp.x +  C_SPEED_X*dT, posTemp.y + C_SPEED_Y*dT));
+				this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*dT));
 			else if (time < 10.0f)
-				this->setPos(CoordF(posTemp.x -  C_SPEED_X*dT, posTemp.y + C_SPEED_Y*dT));
-			else	
+				this->setPos(CoordF(posTemp.x - speedTemp.x*dT, posTemp.y + speedTemp.y*dT));
+			else
 				time = 0;
-			
 		}
 
 		void Chicken::start(){
@@ -39,6 +39,6 @@ namespace Creature{
 				break;
 			}	
 		}
-	}//Final do namespace Entities
-}//Final do namespace Creature
+	}//Final do namespace Creature
+}//Final do namespace Entities
 

@@ -1,8 +1,8 @@
 #include "Creature.h"
 #include <math.h>
 
-namespace Creature{
-	namespace Entities{
+namespace Entities{
+	namespace Creature{
 
 		Creature::Creature(CoordF posTemp, CoordF sizeTemp):
 		MoveEntity(posTemp, sizeTemp),
@@ -22,7 +22,7 @@ namespace Creature{
 					//	printf("B|");
 					this->setPos(CoordF(posThis.x - difference.x, posThis.y));
 				}
-				speed.x = 0.0f;
+				speed.x *= -1.0f;
 			}else{//bateu em y
 				if(posThis.y < slamPos.y){//em cima
 					//for(int i=0; i<1; i++)
@@ -47,6 +47,10 @@ namespace Creature{
 			return life;
 		}
 
+		CoordF Creature::getSpeed() const{
+			return speed; 
+		}
+
 		void Creature::setLife(unsigned lifeTemp){
 			life=lifeTemp;
 		}
@@ -55,9 +59,9 @@ namespace Creature{
 			speed.x = xTemp;
 		}	
 		
-		void Creature::setSpeedY(float YTemp){
-			speed.x = YTemp;
+		void Creature::setSpeedY(float yTemp){
+			speed.y = yTemp;
 		}
 
-	}//final do namespace Entities
-}//final do namespace Creature
+	}//final do namespace Creature
+}//final do namespace Entities

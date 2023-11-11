@@ -1,16 +1,13 @@
 #include "Player.h"
 
-namespace Creature{
-	namespace Entities{
+namespace Entities{
+	namespace Creature{
 
 		Player::Player(CoordF  posTemp):
 		Creature(posTemp, CoordF(P_SIZE_X,P_SIZE_Y)),
-		isP1(true){
-			this->getShape()->setTexture("texture/player.png");
-			this->setID(player);
-			this->setLife(P_LIFE);
-			this->setSpeedX(P_SPEED_X);
-			time=0;
+		ctrl(this)
+		/*,isP1(true)*/{			
+			start();		
 		}
 
 		void Player::damage(unsigned int damage){
@@ -21,22 +18,17 @@ namespace Creature{
 				exit(1);
 			}	
 		}
-
+		
 		void Player::move(float dT){
-			CoordF posTemp = this->getPos();
-			time += dT;
-			this->getShape()->updatePos(posTemp);
-			if(time < 10.0f)
-				this->setPos(CoordF(posTemp.x +  P_SPEED_X*dT, posTemp.y + P_SPEED_Y*dT));
-			else if (time < 20.0f)
-				this->setPos(CoordF(posTemp.x -  P_SPEED_X*dT, posTemp.y + P_SPEED_Y*dT));
-			else	
-				time = 0;
-			
+		
 		}
 
 		void Player::start(){
-		
+			this->getShape()->setTexture("texture/player.png");
+			this->setID(player);
+			this->setLife(P_LIFE);
+			this->setSpeedX(P_SPEED_X);
+			time=0;
 		}
 
 		void Player::collision(Entity* slamEntity, CoordF difference){
@@ -51,5 +43,22 @@ namespace Creature{
 				break;
 			}	
 		}
-	}//Final do namespace Entities
-}//Final do namespace Creature
+
+		void Player::jump(){
+			
+		}
+
+		void Player::left(){
+			this->setPos(CoordF(getPos().x - getSpeed().x, getPos().y));
+		}
+
+		void Player::right(){
+			this->setPos(CoordF(getPos().x + getSpeed().x, getPos().y));
+		}
+
+		void Player::attack(){
+		
+		}
+
+	}//Final do namespace Creature 
+}//Final do namespace Entities

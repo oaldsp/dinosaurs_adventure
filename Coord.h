@@ -5,7 +5,7 @@ using namespace std;
 
 template <typename TYPE>//para tornar a funcao mais generica.
 class Coord{
-	private:
+private:
 public:
 	TYPE x;
 	TYPE y;

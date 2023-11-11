@@ -2,12 +2,12 @@
 
 #include "MoveEntity.h"
 
-#define G -0.0f
+#define G 30.0f
 
 using namespace Entities;
 
-namespace Creature{ 
-	namespace Entities{
+namespace Entities{ 
+	namespace Creature{
 
 		class Creature: public MoveEntity{
 		private:
@@ -20,6 +20,7 @@ namespace Creature{
 			void moveAway(Entity* slamEntity, CoordF difference);
 			void damage(unsigned int damage);
 			unsigned int getLife() const;
+			CoordF getSpeed() const;
 			
 			void setLife(unsigned int lifeTemp);
 			void setSpeedX(float xTemp);
@@ -30,5 +31,5 @@ namespace Creature{
 			virtual void start() = 0;
 			virtual void collision(Entity* slamEntity, CoordF difference) = 0;
 		};
-	}//final do namespace Entities
-}//Final do namespace Creature
+	}//final do namespace Creature
+}//Final do namespace Entities

@@ -4,7 +4,9 @@ namespace Entities{
 
 	StaticEntity::StaticEntity(CoordF posTemp, CoordF sizeTemp):
 	Entity(posTemp),
-	shape(posTemp, sizeTemp){}
+	shape(posTemp, sizeTemp){
+		this->setSize(sizeTemp);
+	}
 
 	void StaticEntity::plot(){
 		shape.plot();

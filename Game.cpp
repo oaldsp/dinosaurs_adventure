@@ -4,6 +4,7 @@ using namespace Managers;
 
 Game::Game():
 GC(&mE,&sE),
+events(Events::getInstance()),
 pGrap(Graphics::getInstance()),
 background(CoordF(0.0f,0.0f), CoordF(1280,720)),
 p1(CoordF(300.f,250.f)),
@@ -17,7 +18,7 @@ w2(CoordF(0.0f,250.0f), CoordF(50.0f,50.0f)){
 
 void Game::start(){
 	background.setTexture("texture/background.jpg");
-	
+
 	mE.addEntity(&p1);
 	mE.addEntity(&c1);
 
@@ -33,7 +34,8 @@ void Game::exe(){
 		dt = pGrap->updateDeltaTime();
 		pGrap->clear();
 		
-		p1.move(dt);
+		//pGrap->centerView(p1.getPos());
+
 		c1.move(dt);
 
 		GC.collide();
