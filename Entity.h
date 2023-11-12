@@ -3,6 +3,8 @@
 #include "Coord.h"
 #include "StaticAnimation.h"
 
+#define G 100.0f
+
 namespace Entities{
 
 	enum ID{
@@ -19,12 +21,14 @@ namespace Entities{
 		CoordF size;
 		ID id;
 	public:
-		Entity(CoordF posTemp = CoordF(0.f, 0.f), CoordF sizeTemp = CoordF(0.f, 0.f), ID idTemp = empty);
+		Entity(CoordF posTemp = CoordF(0.f, 0.f));
 
 		~Entity();
 		
 		//set's
-		void setPos(CoordF temp);
+		void setPos(CoordF posTemp);
+		void setSize(CoordF sizeTemp);
+		void setID(ID idTemp);
 		
 		//get's
 		CoordF getSize() const;

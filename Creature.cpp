@@ -1,12 +1,12 @@
 #include "Creature.h"
 #include <math.h>
 
-namespace Creature{
-	namespace Entities{
+namespace Entities{
+	namespace Creature{
 
-		Creature::Creature(CoordF posTemp, CoordF sizeTemp, ID idTemp , unsigned int lifeTemp, CoordF speedTemp):
-		MoveEntity(posTemp, sizeTemp, idTemp),
-		life(lifeTemp),speed(speedTemp){}
+		Creature::Creature(CoordF posTemp, CoordF sizeTemp):
+		MoveEntity(posTemp, sizeTemp),
+		life(10),speed(CoordF(0.0f, 0.0f)){}
 
 		void Creature::moveAway(Entity* slamEntity, CoordF  difference){
 			CoordF slamPos = slamEntity->getPos();
@@ -31,10 +31,10 @@ namespace Creature{
 				}else{
 					//for(int i=0; i<10; i++)
 					//	printf("D|");
-					this->setPos(CoordF(posThis.x, posThis.y - difference.y));
-				}
+					this->setPos(CoordF(posThis.x, posThis.y - difference.y));}
 				speed.y = 0.0f;
 			}
+
 		}
 
 		void Creature::damage(unsigned int damage){
@@ -46,5 +46,22 @@ namespace Creature{
 		unsigned int Creature::getLife() const{
 			return life;
 		}
-	}//final do namespace Entities
-}//final do namespace Creature
+
+		CoordF Creature::getSpeed() const{
+			return speed; 
+		}
+
+		void Creature::setLife(unsigned lifeTemp){
+			life=lifeTemp;
+		}
+
+		void Creature::setSpeedX(float xTemp){
+			speed.x = xTemp;
+		}	
+		
+		void Creature::setSpeedY(float yTemp){
+			speed.y = yTemp;
+		}
+
+	}//final do namespace Creature
+}//final do namespace Entities

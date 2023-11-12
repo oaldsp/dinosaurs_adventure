@@ -6,10 +6,9 @@
 #define C_SIZE_Y  25.0f
 #define C_LIFE	  100.0f
 #define C_SPEED_X 70.0f
-#define C_SPEED_Y 40.0f	
 
-namespace Creature{
-	namespace Entities{
+namespace Entities{
+	namespace Creature{
 
 		class Chicken: public Enemy{
 		private:
@@ -22,6 +21,5 @@ namespace Creature{
 			void start();
 			void collision(Entity* slamEntity, CoordF difference);
 		};
-	}//Final do namespace Entities
-}//Final do namespace Creature
-
+	}//Final do namespace Creature
+}//Final do namespace Entities

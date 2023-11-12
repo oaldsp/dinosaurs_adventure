@@ -2,9 +2,11 @@
 
 namespace Entities{
 
-	MoveEntity::MoveEntity(CoordF posTemp, CoordF sizeTemp, ID idTemp):
-	Entity(posTemp, sizeTemp, idTemp), live(true),
-	shape(posTemp, sizeTemp){}
+	MoveEntity::MoveEntity(CoordF posTemp, CoordF sizeTemp):
+	Entity(posTemp), live(true),
+	shape(posTemp, sizeTemp){
+		this->setSize(sizeTemp);
+	}
 
 	void MoveEntity::plot(){
 		shape.plot();		

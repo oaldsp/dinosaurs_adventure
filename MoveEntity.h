@@ -10,7 +10,7 @@ namespace Entities{
 		bool live;
 		StaticAnimation shape;
 	public:
-		MoveEntity(CoordF posTemp = CoordF(0.f, 0.f), CoordF sizeTemp = CoordF(0.f, 0.f), ID idTemp = empty);
+		MoveEntity(CoordF posTemp = CoordF(0.f, 0.f), CoordF sizeTemp = CoordF(0.f, 0.f));
 		~MoveEntity() =  default;
 
 		void plot();

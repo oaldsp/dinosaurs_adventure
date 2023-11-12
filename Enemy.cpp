@@ -1,10 +1,10 @@
 #include "Enemy.h"
 
-namespace Creature{
-	namespace Entities{
+namespace Entities{
+	namespace Creature{
 
-		Enemy::Enemy(CoordF  posTemp, CoordF sizeTemp, ID idTemp, unsigned int lifeTemp, CoordF speedTemp):
-		Creature(posTemp, sizeTemp, idTemp, lifeTemp, speedTemp)
+		Enemy::Enemy(CoordF  posTemp, CoordF sizeTemp):
+		Creature(posTemp, sizeTemp)
 		{
 			//start();
 			time=0;
@@ -19,6 +19,6 @@ namespace Creature{
 				break;
 			}	
 		}
-	}//Final do namespace Entities
-}//Final do namespace Creature
+	}//Final do namespace Creature
+}//Final do namespace Entities
 
