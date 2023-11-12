@@ -6,6 +6,7 @@
 #include "Graphics.h"
 #include "StaticAnimation.h"
 #include "Collision.h"
+#include "Events.h"
 #include "EntityList.h"
 
 class Game{
@@ -15,13 +16,16 @@ private:
 	List::EntityList sE;
 	Managers::Collision GC;
 	
+	//Eventos
+	Events* pEvents;
+
 	//grafico	
 	Managers::Graphics* pGrap; 	
 	StaticAnimation background; 
 	
 	//objetos vivos
-	Creature::Entities::Player p1;
-	Creature::Entities::Chicken c1;
+	Entities::Creature::Player p1;
+	Entities::Creature::Chicken c1;
 	
 	//objetos fixos
 	Entities::Obstacles::Ground g1;

@@ -4,10 +4,11 @@ using namespace Managers;
 
 Game::Game():
 GC(&mE,&sE),
+pEvents(Events::getInstance()),
 pGrap(Graphics::getInstance()),
-background(CoordF(0.0f,0.0f), CoordF(1280,720)),
-p1(CoordF(300.f,150.f),true),
-c1(CoordF(50.f,270.f)),
+background(CoordF(-384.0f - 300.0f, 0.0f), CoordF(3*1366.0f, 768.0f)),
+p1(CoordF(300.f,250.f)),
+c1(CoordF(0.0f,230.f)),
 g1(CoordF(0.0f,300.0f), CoordF(600.0f,50.0f)),
 w1(CoordF(550.0f,250.0f), CoordF(50.0f,50.0f)),
 w2(CoordF(0.0f,250.0f), CoordF(50.0f,50.0f)){
@@ -18,6 +19,8 @@ w2(CoordF(0.0f,250.0f), CoordF(50.0f,50.0f)){
 void Game::start(){
 	background.setTexture("texture/background.jpg");
 	
+	p1.getCtrl()->setKeys("W","A","D","S");
+
 	mE.addEntity(&p1);
 	mE.addEntity(&c1);
 
@@ -32,10 +35,12 @@ void Game::exe(){
 	while(pGrap->isWindowOpen()){
 		dt = pGrap->updateDeltaTime();
 		pGrap->clear();
-		
-		p1.move(dt);
-		c1.move(dt);
+		pGrap->centerView(CoordF(p1.getPos().x, 384.0f));
 
+		c1.move(dt);
+		p1.move(dt);
+
+		pEvents->libraryEvents();
 		GC.collide();
 
 		background.plot();

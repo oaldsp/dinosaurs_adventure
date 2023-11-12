@@ -8,8 +8,8 @@
 	Link: https://youtu.be/RFSOXXsm4Ug?si=ADNre21NtIXd3c5n
 */
 
-#define WIDTH 1280
-#define HEIGHT 720
+#define WIDTH 1366
+#define HEIGHT 768
 
 namespace Managers {
 
@@ -25,7 +25,7 @@ namespace Managers {
     }
 
     Graphics::Graphics() :
-    window(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "Game", sf::Style::Titlebar | sf::Style::Close)),
+    window(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "Game", /*sf::Style::Titlebar |*/ sf::Style::/*Fullscreen*/Default | sf::Style::Close)),
     view(sf::Vector2f(WIDTH / 2, HEIGHT / 2), sf::Vector2f(WIDTH, HEIGHT)),
     texturesMap(),
     fontsMap() { }

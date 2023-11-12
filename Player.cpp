@@ -1,13 +1,13 @@
 #include "Player.h"
 
-namespace Creature{
-	namespace Entities{
+namespace Entities{
+	namespace Creature{
 
-		Player::Player(CoordF  posTemp, bool isP1Temp):
-		Creature(posTemp, CoordF(P_SIZE_X,P_SIZE_Y), player, P_LIFE, CoordF(P_SPEED_X,P_SPEED_Y)),
-		isP1(isP1Temp){
-			start();
-			time=0;
+		Player::Player(CoordF  posTemp):
+		Creature(posTemp, CoordF(P_SIZE_X,P_SIZE_Y)),
+		ctrl(this)
+		/*,isP1(true)*/{			
+			start();		
 		}
 
 		void Player::damage(unsigned int damage){
@@ -18,22 +18,27 @@ namespace Creature{
 				exit(1);
 			}	
 		}
-
+		
 		void Player::move(float dT){
 			CoordF posTemp = this->getPos();
-			time += dT;
-			this->getShape()->updatePos(posTemp);
-			if(time < 10.0f)
-				this->setPos(CoordF(posTemp.x +  P_SPEED_X*dT, posTemp.y + P_SPEED_Y*dT));
-			else if (time < 20.0f)
-				this->setPos(CoordF(posTemp.x -  P_SPEED_X*dT, posTemp.y + P_SPEED_Y*dT));
-			else	
-				time = 0;
+			CoordF speedTemp = this->getSpeed();
 			
+			time += dT;
+			
+			this->getShape()->updatePos(posTemp);	
+			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*time + G*time*time/2));
+			/*
+				USANDO FORMULA DE MRUV PARA DESLOCAMENTO EM Y
+				S=So+Vot+at^2/2
+			*/
 		}
 
 		void Player::start(){
 			this->getShape()->setTexture("texture/player.png");
+			this->setID(player);
+			this->setLife(P_LIFE);
+			this->setSpeedX(0.0f);
+			time=0;
 		}
 
 		void Player::collision(Entity* slamEntity, CoordF difference){
@@ -42,11 +47,38 @@ namespace Creature{
 				this->damage(101);
 				break;
 			case ground:
+				time = 0.0f;//zero o tempo para o jump
 				this->moveAway(slamEntity, difference);
 				break;
 			default:
 				break;
 			}	
 		}
-	}//Final do namespace Entities
-}//Final do namespace Creature
+
+		Pcontrol* Player::getCtrl(){
+			return &ctrl;
+		}
+
+		void Player::jump(){
+			this->setPos(CoordF(getPos().x, getPos().y - 10.0f));
+			this->setSpeedY(-P_SPEED_Y);
+		}
+
+		void Player::left(){
+			this->setSpeedX(-P_SPEED_X);
+		}
+
+		void Player::right(){
+			this->setSpeedX(P_SPEED_X);
+		}
+
+		void Player::attack(){
+			
+		}
+
+		void Player::stop(){
+			this->setSpeedX(0.0f);
+		}
+
+	}//Final do namespace Creature 
+}//Final do namespace Entities

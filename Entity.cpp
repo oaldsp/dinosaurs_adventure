@@ -2,18 +2,24 @@
 
 namespace Entities{
 
-	Entity::Entity(CoordF posTemp, CoordF sizeTemp, ID idTemp){
+	Entity::Entity(CoordF posTemp){
 		pos  = posTemp;
-		size = sizeTemp;
-		id = idTemp;
 	}
 
 	Entity::~Entity(){
 
 	}
 
-	void Entity::setPos(CoordF temp){
-		pos=temp;
+	void Entity::setPos(CoordF posTemp){
+		pos=posTemp;
+	}
+
+	void Entity::setSize(CoordF sizeTemp){
+		size=sizeTemp;
+	}
+
+	void Entity::setID(ID idTemp){
+		id=idTemp;
 	}
 
 	CoordF Entity::getSize() const{
