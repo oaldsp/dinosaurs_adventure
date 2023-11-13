@@ -9,6 +9,7 @@ pGrap(Graphics::getInstance()),
 background(CoordF(-384.0f - 300.0f, 0.0f), CoordF(3*1366.0f, 768.0f)),
 p1(CoordF(300.f,250.f)),
 c1(CoordF(0.0f,230.f)),
+m1(CoordF(150.0f, 0.0f), CoordF(50.0f,50.0f)),
 g1(CoordF(0.0f,300.0f), CoordF(600.0f,50.0f)),
 w1(CoordF(550.0f,250.0f), CoordF(50.0f,50.0f)),
 w2(CoordF(0.0f,250.0f), CoordF(50.0f,50.0f)){
@@ -18,11 +19,12 @@ w2(CoordF(0.0f,250.0f), CoordF(50.0f,50.0f)){
 
 void Game::start(){
 	background.setTexture("texture/background.jpg");
-	
+
 	p1.getCtrl()->setKeys("W","A","D","S");
 
 	mE.addEntity(&p1);
 	mE.addEntity(&c1);
+	mE.addEntity(&m1);
 
 	sE.addEntity(&g1);
 	sE.addEntity(&w1);
@@ -39,6 +41,7 @@ void Game::exe(){
 
 		c1.move(dt);
 		p1.move(dt);
+		m1.move(dt);
 
 		pEvents->libraryEvents();
 		GC.collide();
@@ -46,6 +49,7 @@ void Game::exe(){
 		background.plot();
 		p1.plot();
 		c1.plot();
+		m1.plot();
 		g1.plot();
 		w1.plot();
 		w2.plot();

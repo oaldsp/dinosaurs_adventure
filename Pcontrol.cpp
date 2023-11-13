@@ -10,37 +10,39 @@ Pcontrol::~Pcontrol(){
 }
 
 void Pcontrol::pressed(std::string keyTemp){
-	if(NULL  != pPlayer){
-		if(keyTemp == jump){
-			//keysBool[jump] = true;
-			pPlayer->jump();
-		}if(keyTemp == left){
-			//keysBool[left] = true;
-			pPlayer->left();
-		}if(keyTemp == right){
-			//getKeysBool()->operator[](right) = true;
-			pPlayer->right();
-		}if(keyTemp == attack){
-			//keysBool[attack] = true;
-			pPlayer->attack();
-		}
+	if(NULL  == pPlayer){
+		std::cout<<"ponteiro do player nulo"<<std::endl;
+		exit(1);
+	}if(keyTemp == jump){
+		//[jump] = true;
+		pPlayer->jump();
+	}if(keyTemp == left){
+		//keysBool[left] = true;
+		pPlayer->left();
+	}if(keyTemp == right){
+		//getKeys()->operator[](right) = true;
+		pPlayer->right();
+	}if(keyTemp == attack){
+		//keysBool[attack] = true;
+		pPlayer->attack();
 	}
 }
 
 void Pcontrol::released(std::string keyTemp){
-	if(NULL  != pPlayer){
-		//if(keyTemp == jump)
-			//keysBool[jump] = false;
-		if(keyTemp == left)
-			//keysBool[left] = false;
-			pPlayer->stop();
-		if(keyTemp == right)
-			//keysBool[right] = false;
-			pPlayer->stop();
-		//if(keyTemp == attack)
-			//keysBool[attack] = false;
-	}
-}
+	if(NULL == pPlayer){
+		std::cout << "ponteiro do player nulo" << std::endl;
+		exit(1);
+	}//if(keyTemp == jump)
+		//keysBool[jump] = false;
+	if(keyTemp == left)
+		//keysBool[left] = false;
+		pPlayer->stop();
+	if(keyTemp == right)
+		//keysBool[right] = false;
+		pPlayer->stop();
+	//if(keyTemp == attack)
+		//keysBool[attack] = false;
+}	
 
 
 void Pcontrol::setKeys(std::string jumpTemp, std::string leftTemp, std::string rightTemp, std::string attackTemp){

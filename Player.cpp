@@ -2,11 +2,11 @@
 
 namespace Entities{
 	namespace Creature{
-
+		
 		Player::Player(CoordF  posTemp):
 		Creature(posTemp, CoordF(P_SIZE_X,P_SIZE_Y)),
-		ctrl(this)
-		/*,isP1(true)*/{			
+		ctrl(this),
+		chao(true){			
 			start();		
 		}
 
@@ -22,15 +22,23 @@ namespace Entities{
 		void Player::move(float dT){
 			CoordF posTemp = this->getPos();
 			CoordF speedTemp = this->getSpeed();
-			
+
+			float a = getG() - (getK()*getSize().x*getSize().x*speedTemp.y*speedTemp.y)/(2*P_M);
+			/*
+				Formula da aceleracao considerando arasto
+					a = g - (K*x^2*v^2) /2m
+			 */
+				
 			time += dT;
-			
+				
 			this->getShape()->updatePos(posTemp);	
-			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*time + G*time*time/2));
+			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*time + a*time*time/2));
 			/*
 				USANDO FORMULA DE MRUV PARA DESLOCAMENTO EM Y
 				S=So+Vot+at^2/2
 			*/
+			
+			this->setSpeedY(getSpeed().y + a* dT);//V = V0 + at (ATUALIZA VELOCIDADE PARA PROXIMA EXECUCAO)
 		}
 
 		void Player::start(){
@@ -47,6 +55,7 @@ namespace Entities{
 				this->damage(101);
 				break;
 			case ground:
+				chao = true;
 				time = 0.0f;//zero o tempo para o jump
 				this->moveAway(slamEntity, difference);
 				break;
@@ -60,8 +69,11 @@ namespace Entities{
 		}
 
 		void Player::jump(){
-			this->setPos(CoordF(getPos().x, getPos().y - 10.0f));
-			this->setSpeedY(-P_SPEED_Y);
+			if(chao){       	
+				this->setPos(CoordF(getPos().x, getPos().y - 10.0f));
+				this->setSpeedY(-P_SPEED_Y);
+			}
+			chao = false;
 		}
 
 		void Player::left(){

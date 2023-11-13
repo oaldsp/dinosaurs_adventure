@@ -6,7 +6,7 @@ namespace Entities{
 
 		Creature::Creature(CoordF posTemp, CoordF sizeTemp):
 		MoveEntity(posTemp, sizeTemp),
-		life(10),speed(CoordF(0.0f, 0.0f)){}
+		life(10){}
 
 		void Creature::moveAway(Entity* slamEntity, CoordF  difference){
 			CoordF slamPos = slamEntity->getPos();
@@ -22,7 +22,7 @@ namespace Entities{
 					//	printf("B|");
 					this->setPos(CoordF(posThis.x - difference.x, posThis.y));
 				}
-				speed.x = 0.0f;
+				setSpeedX(0.0f);
 			}else{//bateu em y
 				if(posThis.y < slamPos.y){//em cima
 					//for(int i=0; i<1; i++)
@@ -32,7 +32,7 @@ namespace Entities{
 					//for(int i=0; i<10; i++)
 					//	printf("D|");
 					this->setPos(CoordF(posThis.x, posThis.y - difference.y));}
-				speed.y = 0.0f;
+				setSpeedY(0.0f);
 			}
 
 		}
@@ -47,21 +47,8 @@ namespace Entities{
 			return life;
 		}
 
-		CoordF Creature::getSpeed() const{
-			return speed; 
-		}
-
 		void Creature::setLife(unsigned lifeTemp){
 			life=lifeTemp;
 		}
-
-		void Creature::setSpeedX(float xTemp){
-			speed.x = xTemp;
-		}	
-		
-		void Creature::setSpeedY(float yTemp){
-			speed.y = yTemp;
-		}
-
 	}//final do namespace Creature
 }//final do namespace Entities

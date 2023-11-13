@@ -2,6 +2,7 @@
 
 #include "Player.h"
 #include "Chicken.h"
+#include "Meteor.h"
 #include "Ground.h"
 #include "Graphics.h"
 #include "StaticAnimation.h"
@@ -28,6 +29,7 @@ private:
 	Entities::Creature::Chicken c1;
 	
 	//objetos fixos
+	Entities::Obstacles::Meteor m1;
 	Entities::Obstacles::Ground g1;
 	Entities::Obstacles::Ground w1; 
 	Entities::Obstacles::Ground w2; 

@@ -32,10 +32,6 @@ void Input::remove(Observer* obTemp){
 	observers.remove(obTemp); 
 }
 
-std::map<sf::Keyboard::Key, bool>* Input::getKeysBool(){
-	return &keysBool;
-}
-
 void Input::keyPressed(sf::Keyboard::Key keyTemp){
 	for(it = observers.begin(); it != observers.end(); it++)
 		(*it)->pressed(mapToString(keyTemp));

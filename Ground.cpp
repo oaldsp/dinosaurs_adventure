@@ -4,8 +4,7 @@ namespace Entities{
 	namespace Obstacles{
 		Ground::Ground(CoordF  posTemp, CoordF sizeTemp):
 		StaticEntity(posTemp, sizeTemp){
-			this->getShape()->setTexture("texture/ground.jpg");
-			this->setID(ground);
+			start();
 		}
 
 		void Ground::move(float dT){
@@ -13,7 +12,8 @@ namespace Entities{
 		}
 
 		void Ground::start(){
-		
+			this->getShape()->setTexture("texture/ground.jpg");
+			this->setID(ground);
 		}
 
 		void Ground::collision(Entity* slamEntity, CoordF difference){	

@@ -7,15 +7,16 @@
 #define P_SIZE_X  80.0f
 #define P_SIZE_Y  50.0f
 #define P_LIFE	  100.0f
-#define P_SPEED_X 300.0f
-#define P_SPEED_Y 20.0f
+#define P_SPEED_X 350.0f
+#define P_SPEED_Y 21.0f
+#define P_M 	  150000.0f//massa
 
 namespace Entities{
 	namespace Creature{
 
 		class Player: public Creature{
 		private:
-			//const bool isP1;//flag para saber se eh jogador 1
+			bool chao;//flag para saber se esta no chao
 			Pcontrol ctrl;	
 			float time;	
 		public:
