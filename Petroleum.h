@@ -5,11 +5,12 @@
 namespace Entities{
 	namespace Obstacles{ 
 
-		class Ground: public Obstacle{
+		class Petroleum: public Obstacle{
 		private:
+			int viscosity;
 		public:
-			Ground(CoordF posTemp = CoordF(0.0f,0.0f), CoordF sizeTemp = CoordF(0.0f,0.0f));
-			~Ground() = default;
+			Petroleum(CoordF posTemp = CoordF(0.0f,0.0f), CoordF sizeTemp = CoordF(0.0f,0.0f));
+			~Petroleum() = default;
 
 			//metodos virtuais puros
 			void move(float dT);
@@ -18,3 +19,4 @@ namespace Entities{
 		};
 	}//final do namespace Obstacles
 }//final do namespace Entity
+

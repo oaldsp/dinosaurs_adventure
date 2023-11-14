@@ -15,7 +15,10 @@ namespace Entities{
 		chicken,
 		player,
 		ground,
-		coin
+		meteor,
+		coin,
+		petroleum,
+		rooster
 	};
 
 	class Entity{

@@ -2,36 +2,42 @@
 
 namespace Entities{
 	namespace Obstacles{
-		Meteor::Meteor(CoordF  posTemp, CoordF sizeTemp):
-		StaticEntity(posTemp, sizeTemp){
+		Meteor::Meteor(CoordF  posTemp):
+		Obstacle(posTemp, CoordF(M_SIZE_X, M_SIZE_Y)){
+			srand(std::time(NULL));
+			riskLevel = rand()%4 +1;
 			start();
+		}
+		
+		int Meteor::getRisk() const{
+			return riskLevel;
 		}
 
 		void Meteor::move(float dT){
-			CoordF posTemp = this->getPos();
+			/*CoordF posTemp = this->getPos();
 			CoordF speedTemp = this->getSpeed();
 
-			float a = getG()  - (getK()*getSize().x*getSize().x*speedTemp.y*speedTemp.y)/(2*M_M);
+			float a = getG()  - (getK()*getSize().x*getSize().x*speedTemp.y*speedTemp.y)/(2*M_M);*/
 			/*
 				Formula da aceleracao considerando arasto
 					a = g - (K*x^2*v^2) /2m
 			 */
 				
-			time += dT;
+			/*time += dT;
 				
 			this->getShape()->updatePos(posTemp);	
-			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*time + a*time*time/2));
+			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*time + a*time*time/2));*/
 			/*
 				USANDO FORMULA DE MRUV PARA DESLOCAMENTO EM Y
 				S=So+Vot+at^2/2
 			*/
 			
-			this->setSpeedY(getSpeed().y + a* dT);//V = V0 + at (ATUALIZA VELOCIDADE PARA PROXIMA EXECUCAO)
+			//this->setSpeedY(getSpeed().y + a* dT);//V = V0 + at (ATUALIZA VELOCIDADE PARA PROXIMA EXECUCAO)
 		}
 
 		void Meteor::start(){
 			this->getShape()->setTexture("texture/meteor.png");
-			this->setID(ground);
+			this->setID(meteor);
 		}
 
 		void Meteor::collision(Entity* slamEntity, CoordF difference){

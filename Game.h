@@ -2,6 +2,8 @@
 
 #include "Player.h"
 #include "Chicken.h"
+#include "Rooster.h"
+#include "Petroleum.h"
 #include "Meteor.h"
 #include "Ground.h"
 #include "Graphics.h"
@@ -27,8 +29,10 @@ private:
 	//objetos vivos
 	Entities::Creature::Player p1;
 	Entities::Creature::Chicken c1;
-	
+	Entities::Creature::Rooster r1;
+
 	//objetos fixos
+	Entities::Obstacles::Petroleum e1;
 	Entities::Obstacles::Meteor m1;
 	Entities::Obstacles::Ground g1;
 	Entities::Obstacles::Ground w1; 

@@ -2,6 +2,7 @@
 
 #include "Creature.h"
 #include "Pcontrol.h"
+#include "Meteor.h"
 #include <math.h>
 
 #define P_SIZE_X  80.0f

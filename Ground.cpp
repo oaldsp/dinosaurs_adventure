@@ -3,7 +3,7 @@
 namespace Entities{
 	namespace Obstacles{
 		Ground::Ground(CoordF  posTemp, CoordF sizeTemp):
-		StaticEntity(posTemp, sizeTemp){
+		Obstacle(posTemp, sizeTemp){
 			start();
 		}
 

@@ -54,10 +54,23 @@ namespace Entities{
 			case chicken:
 				this->damage(101);
 				break;
+			case rooster:
+				this->damage(101);
+				break;
 			case ground:
 				chao = true;
 				time = 0.0f;//zero o tempo para o jump
 				this->moveAway(slamEntity, difference);
+				break;
+			case petroleum:
+				chao = false;
+				time = 0.0f;//zero o tempo para o jump
+				this->moveAway(slamEntity, difference);
+				break;
+			case meteor:
+				this->damage(25);
+				setSpeedX(-3.0f*getSpeed().x);
+				setSpeedY(-1.5f*getSpeed().y);
 				break;
 			default:
 				break;
