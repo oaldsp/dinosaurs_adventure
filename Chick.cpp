@@ -1,18 +1,20 @@
-#include "Chicken.h"
+#include "Chick.h"
 
 namespace Entities{
 	namespace Creature{
 
-		Chicken::Chicken(CoordF  posTemp):
-		Enemy(posTemp, CoordF(CE_SIZE_X, CE_SIZE_Y)), cooldown(5.0f){
+		Chick::Chick(CoordF  posTemp):
+		Enemy(posTemp, CoordF(C_SIZE_X, C_SIZE_Y)){
+			srand(std::time(NULL));
+			skill = rand()%3 +1;
 			start();
 		}
 
-		void Chicken::move(float dT){
+		void Chick::move(float dT){
 			CoordF posTemp = this->getPos();
 			CoordF speedTemp = this->getSpeed();
 		
-			float a = getG() - (getK()*getSize().x*getSize().x*speedTemp.y*speedTemp.y)/(2*CE_M);
+			float a = getG() - (getK()*getSize().x*getSize().x*speedTemp.y*speedTemp.y)/(2*C_M);
 			/*
 				Formula da aceleracao considerando arasto
 					a = g - (K*x^2*v^2) /2m
@@ -30,15 +32,15 @@ namespace Entities{
 			this->setSpeedY(getSpeed().y + a* dT);//V = V0 + at (ATUALIZA VELOCIDADE PARA PROXIMA EXECUCAO)
 		}
 
-		void Chicken::start(){
-			this->getShape()->setTexture("texture/chicken.png");
-			this->setID(chicken);
-			this->setLife(CE_LIFE);
-			this->setSpeedX(CE_SPEED_X);
+		void Chick::start(){
+			this->getShape()->setTexture("texture/chick.png");
+			this->setID(chick);
+			this->setLife(C_LIFE);
+			this->setSpeedX(C_SPEED_X);
 			setTime(0.0f);
 		}
 
-		void Chicken::collision(Entity* slamEntity, CoordF difference){
+		void Chick::collision(Entity* slamEntity, CoordF difference){
 			switch(slamEntity->getID()){ 
 			case ground:
 				setTime(0.0f);//zero o tempo para o jump
@@ -56,10 +58,9 @@ namespace Entities{
 			}	
 		}
 
-		int Chicken::getAttribute() const{
-			return 1;
+		int Chick::getAttribute() const{
+			return skill;
 		}
 	}//Final do namespace Creature
 }//Final do namespace Entities
-
 

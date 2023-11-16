@@ -7,15 +7,18 @@ namespace Entities{
 
 		class Enemy: public Creature{
 		private:
-			float time;	
+			static unsigned int EnemyTotal;
 		public:
 			Enemy(CoordF posTemp = CoordF(0.0f, 0.0f), CoordF sizeTemp = CoordF(0.0f, 0.0f)); 
 				
 			virtual ~Enemy() = default;
 
-			virtual void move(float dT) = 0;
+			void damage(const float damage);
+
+			virtual void move(const float dT) = 0;
 			virtual void start() = 0;
 			virtual void collision(Entity* slamEntity, CoordF difference) = 0;
+			virtual int getAttribute() const=  0;
 		};
 	}//Final do namespace Creature
 }//Final do namespace Entities

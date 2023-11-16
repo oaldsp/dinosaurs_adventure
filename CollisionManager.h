@@ -16,16 +16,16 @@ namespace States {
 
 namespace Managers {
 
-    class Collision {
+    class CollisionManager{
     private:
         List::EntityList* movingEntities;
         List::EntityList* staticEntities;
         //States::Level* plvl;
 
     public:
-        Collision(List::EntityList* movingEntities, List::EntityList* staticEntities/*, States::Level* plvl*/);
+        CollisionManager(List::EntityList* movingEntities, List::EntityList* staticEntities/*, States::Level* plvl*/);
 
-        ~Collision();
+        ~CollisionManager();
 
         void collide();
 

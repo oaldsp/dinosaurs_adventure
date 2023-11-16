@@ -4,6 +4,8 @@ namespace Entities{
 	namespace Obstacles{
 		Ground::Ground(CoordF  posTemp, CoordF sizeTemp):
 		Obstacle(posTemp, sizeTemp){
+			srand(std::time(NULL));
+			friction= rand()%3 + 1;
 			start();
 		}
 
@@ -17,6 +19,10 @@ namespace Entities{
 		}
 
 		void Ground::collision(Entity* slamEntity, CoordF difference){	
+		}
+
+		int Ground::getAttribute() const{
+			return friction;	
 		}
 	}//final do namespace Obstacles
 }//final do namespace Entities 

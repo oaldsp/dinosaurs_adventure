@@ -5,7 +5,7 @@ namespace Entities{
 		Petroleum::Petroleum(CoordF  posTemp, CoordF sizeTemp):
 		Obstacle(posTemp, sizeTemp){
 			srand(std::time(NULL));
-			viscosity = rand()%10 +1;
+			viscosity = rand()%11 + 10;
 			start();
 		}
 
@@ -20,10 +20,13 @@ namespace Entities{
 
 		void Petroleum::collision(Entity* slamEntity, CoordF difference){
 			switch(slamEntity->getID()){
-			case player:
-				slamEntity->setSpeedX(getSpeed().x/((float)viscosity));		
+			default:		
 			break;
 			}
+		}
+
+		int Petroleum::getAttribute() const{
+			return viscosity;
 		}
 	}//final do namespace Obstacles
 }//final do namespace Entities 

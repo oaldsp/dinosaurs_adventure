@@ -18,6 +18,14 @@ namespace List{
 		list.pop(pos);
 	}
 
+	void EntityList::plot(){
+		/*Element<TL>* aux;// = list.getFirst();
+		while(NULL != aux){
+			(aux->getData)->plot();
+			aux = aux->getNext(); 
+		}*/
+	}
+
 	unsigned int EntityList::getSize(){
 		return list.getSize();
 	}	

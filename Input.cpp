@@ -33,6 +33,7 @@ void Input::remove(Observer* obTemp){
 }
 
 void Input::keyPressed(sf::Keyboard::Key keyTemp){
+	//std::cout << mapToString(keyTemp) << std::endl;
 	for(it = observers.begin(); it != observers.end(); it++)
 		(*it)->pressed(mapToString(keyTemp));
 }

@@ -17,6 +17,7 @@ namespace List{
 		void addEntity(Entity* pTemp);
 		void removeEntity(Entity* pTemp);
 		void removeEntity(unsigned int pos);
+		void plot();
 		unsigned int getSize();
 		Entity* operator[](unsigned int pos);
 	}; 

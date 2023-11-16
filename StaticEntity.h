@@ -15,8 +15,10 @@ namespace Entities{
 		void plot();
 		StaticAnimation* getShape();
 
-		//metodos virtuais puros 
+		//metodos virtuais puro
+		virtual void move(const float dT) = 0; 
 		virtual void start() = 0;
 		virtual void collision(Entity* slamEntity, CoordF difference) = 0;
+		virtual int getAttribute() const = 0;
 	};
 }//Final do namespace Entities

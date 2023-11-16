@@ -9,21 +9,21 @@ namespace Entities{
 
 		class Creature: public MoveEntity{
 		private:
-			unsigned int life;
+			float life;
 		public:
 			Creature(CoordF posTemp, CoordF sizeTemp);
 			~Creature() = default;
 		
 			void moveAway(Entity* slamEntity, CoordF difference);
-			void damage(unsigned int damage);
-			unsigned int getLife() const;
 			
-			void setLife(unsigned int lifeTemp);
-			
+			float getLife() const;
+			void setLife(const float lifeTemp);
+		
 			//metodos virtuais puros
-			virtual void move(float dT) = 0; 
+			virtual void move(const float dT) = 0; 
 			virtual void start() = 0;
 			virtual void collision(Entity* slamEntity, CoordF difference) = 0;
+			virtual int getAttribute() const=  0;
 		};
 	}//final do namespace Creature
 }//Final do namespace Entities

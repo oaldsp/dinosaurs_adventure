@@ -13,9 +13,10 @@ namespace Entities{
 			~Petroleum() = default;
 
 			//metodos virtuais puros
-			void move(float dT);
+			void move(const float dT);
 			void start();
 			void collision(Entity* slamEntity, CoordF difference);
+			int getAttribute() const;
 		};
 	}//final do namespace Obstacles
 }//final do namespace Entity

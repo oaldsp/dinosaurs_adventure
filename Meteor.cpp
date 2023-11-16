@@ -9,11 +9,7 @@ namespace Entities{
 			start();
 		}
 		
-		int Meteor::getRisk() const{
-			return riskLevel;
-		}
-
-		void Meteor::move(float dT){
+		void Meteor::move(const float dT){
 			/*CoordF posTemp = this->getPos();
 			CoordF speedTemp = this->getSpeed();
 
@@ -43,13 +39,17 @@ namespace Entities{
 		void Meteor::collision(Entity* slamEntity, CoordF difference){
 			switch(slamEntity->getID()){
 			case ground:
-				printf("bateu");
-				time = 0.0f;//zero o tempo para o jump
-				setSpeedY(0.0f);	
+				//printf("bateu");
+				//time = 0.0f;//zero o tempo para o jump
+				//setSpeedY(0.0f);	
 				break;
 			default:
 				break;
 			}
+		}
+
+		int Meteor::getAttribute() const{
+			return riskLevel;
 		}
 	}//final do namespace Obstacles
 }//final do namespace Entities 

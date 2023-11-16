@@ -3,13 +3,14 @@
 #include "Creature.h"
 #include "Pcontrol.h"
 #include "Meteor.h"
+#include "Projectile.h"
 #include <math.h>
 
 #define P_SIZE_X  80.0f
 #define P_SIZE_Y  50.0f
 #define P_LIFE	  100.0f
 #define P_SPEED_X 350.0f
-#define P_SPEED_Y 21.0f
+#define P_SPEED_Y 300.0f
 #define P_M 	  150000.0f//massa
 
 namespace Entities{
@@ -18,16 +19,18 @@ namespace Entities{
 		class Player: public Creature{
 		private:
 			bool chao;//flag para saber se esta no chao
-			Pcontrol ctrl;	
-			float time;	
+			Pcontrol ctrl;
+			Projectile* prct;	
 		public:
-			Player(CoordF posTemp = CoordF(0.0f, 0.0f));
-			virtual ~Player() = default;
+			Player(CoordF posTemp = CoordF(0.0f, 0.0f), Projectile*  prctTemp = NULL);
+			~Player();
 			
-			void damage(unsigned int damage);
-			void move(float dT);
+			void damage(const float damage);
+			void move(const float dT);
 			void start();
 			void collision(Entity* slamEntity, CoordF difference);
+			void repel(Entity* slamEntity);
+			int getAttribute() const;
 
 			Pcontrol* getCtrl();
 

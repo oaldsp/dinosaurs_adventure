@@ -1,4 +1,4 @@
-#include "Collision.h"
+#include "CollisionManager.h"
 
 #include "MoveEntity.h"
 //#include "StaticEntity.h"
@@ -11,17 +11,17 @@
 
 namespace Managers {
 
-    Collision::Collision(List::EntityList* movingEntities, List::EntityList* staticEntities/*, States::Level* plvl*/) :
+    CollisionManager::CollisionManager(List::EntityList* movingEntities, List::EntityList* staticEntities/*, States::Level* plvl*/) :
     movingEntities(movingEntities),
     staticEntities(staticEntities)
     /*,plvl(plvl) */{ }
 
-    Collision::~Collision() {
+    CollisionManager::~CollisionManager() {
         movingEntities = nullptr;
         staticEntities = nullptr;
     }
 
-    void Collision::collide() {
+    void CollisionManager::collide() {
         Entities::Entity* ent1 = nullptr;
         Entities::Entity* ent2 = nullptr;
         CoordF intersect;
@@ -78,13 +78,13 @@ namespace Managers {
     }
 
     /* Function to deallocate entities after collision */
-    void Collision::clear() {
+    void CollisionManager::clear() {
         Entities::MoveEntity* pAux = nullptr;
         for (int i = 0; i < movingEntities->getSize(); i++) {
             pAux = static_cast<Entities::MoveEntity*>((*movingEntities)[i]);
             if (pAux != nullptr) {
                 if (!pAux->getLive()) {
-                    if (pAux->getID() != Entities::ID::coin)
+                    //if (pAux->getID() != Entities::ID::coin)
                         //plvl->coinBomb(pAux->getLive());
                     movingEntities->removeEntity(pAux);
                     i--;

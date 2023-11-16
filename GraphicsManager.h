@@ -12,7 +12,7 @@
 
 namespace Managers {
 
-    class Graphics {
+    class GraphicsManager{
     private:
         sf::RenderWindow* window;
         sf::View view;
@@ -22,13 +22,13 @@ namespace Managers {
 	float dT;
         
         /* Singleton design pattern */
-        static Managers::Graphics* instance;
-        Graphics();
+        static Managers::GraphicsManager* instance;
+        GraphicsManager();
 
     public:
-        ~Graphics();
+        ~GraphicsManager();
 
-        static Graphics* getInstance();
+        static GraphicsManager* getInstance();
 
         void render(sf::RectangleShape* body);
 

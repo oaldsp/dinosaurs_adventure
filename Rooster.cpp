@@ -5,7 +5,7 @@ namespace Entities{
 
 		Rooster::Rooster(CoordF  posTemp):
 		Enemy(posTemp, CoordF(R_SIZE_X, R_SIZE_Y)),
-		time(0.0f), protect(0){
+		protect(0){
 			start();
 		}
 
@@ -18,11 +18,11 @@ namespace Entities{
 				Formula da aceleracao considerando arasto
 					a = g - (K*x^2*v^2) /2m
 			 */
-				
-			time += dT;
+			
+			setTime(getTime() + dT);	
 			
 			this->getShape()->updatePos(posTemp);	
-			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*time + a*time*time/2));
+			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*getTime() + a*getTime()*getTime()/2));
 			/*
 				USANDO FORMULA DE MRUV PARA DESLOCAMENTO EM Y
 				S=So+Vot+at^2/2
@@ -41,20 +41,24 @@ namespace Entities{
 		void Rooster::collision(Entity* slamEntity, CoordF difference){
 			switch(slamEntity->getID()){ 
 			case ground:
-				time = 0.0f;//zero o tempo para o jump
+				setTime(0.0f);//zero o tempo para o jump
 				moveAway(slamEntity,difference);
 				break;
 			case chicken:
-				setSpeedX(5.0f*getSpeed().x);
+				setSpeedX(2.5f*R_SPEED_X);
 				protect = true;
 				break;
 			case petroleum:
-				time = 0.0f;//zero o tempo para o jump
+				setTime(0.0f);//zero o tempo para o jump
 				moveAway(slamEntity,difference);
 				break;
 			default:
 				break;
 			}	
+		}
+
+		int Rooster::getAttribute() const{
+			return (int)protect;
 		}
 	}//Final do namespace Creature
 }//Final do namespace Entities

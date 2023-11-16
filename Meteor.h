@@ -19,12 +19,11 @@ namespace Entities{
 			Meteor(CoordF posTemp = CoordF(0.0f,0.0f));
 			~Meteor() = default;
 
-			int getRisk() const;
-
 			//metodos virtuais puros
-			void move(float dT);
+			void move(const float dT);
 			void start();
 			void collision(Entity* slamEntity, CoordF difference);
+			int getAttribute() const;
 		};
 	}//final do namespace Obstacles
 }//final do namespace Entity
