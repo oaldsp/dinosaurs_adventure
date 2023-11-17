@@ -40,11 +40,14 @@ namespace Entities{
 
 		void Rooster::collision(Entity* slamEntity, CoordF difference){
 			switch(slamEntity->getID()){ 
+			case projectile:
+				this->damage(10.0f);
+				break;
 			case ground:
 				setTime(0.0f);//zero o tempo para o jump
 				moveAway(slamEntity,difference);
 				break;
-			case chicken:
+			case chick:
 				setSpeedX(2.5f*R_SPEED_X);
 				protect = true;
 				break;

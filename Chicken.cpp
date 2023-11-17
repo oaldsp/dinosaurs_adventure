@@ -3,9 +3,14 @@
 namespace Entities{
 	namespace Creature{
 
-		Chicken::Chicken(CoordF  posTemp):
-		Enemy(posTemp, CoordF(CE_SIZE_X, CE_SIZE_Y)), cooldown(5.0f){
-			start();
+		Chicken::Chicken(CoordF  posTemp, Projectile*  prctTemp):
+		Enemy(posTemp, CoordF(CE_SIZE_X, CE_SIZE_Y)), 
+		cooldown(CE_CW), prct(prctTemp){	
+			start();	
+		}
+
+		Chicken::~Chicken(){
+			prct  = NULL;
 		}
 
 		void Chicken::move(float dT){
@@ -19,7 +24,10 @@ namespace Entities{
 			 */
 			
 			this->setTime(getTime() + dT);	
-				
+			cooldown -= dT;
+
+			this->attack();
+
 			this->getShape()->updatePos(posTemp);	
 			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*getTime() + a*getTime()*getTime()/2));
 			/*
@@ -32,10 +40,23 @@ namespace Entities{
 
 		void Chicken::start(){
 			this->getShape()->setTexture("texture/chicken.png");
+			//prct->getShape()->setTexture("texture/prctE.png");
+			//prct->getShape()->changeSize(CoordF(PE_SIZE_X, PE_SIZE_Y));//Muda no StaticAnimation
+			//prct->setSize(CoordF(PE_SIZE_X, PE_SIZE_Y));//Muda no Ente
 			this->setID(chicken);
 			this->setLife(CE_LIFE);
 			this->setSpeedX(CE_SPEED_X);
-			setTime(0.0f);
+		}
+		
+		void Chicken::attack(){
+			if(cooldown <= 0.0f){
+				/*VER PORQUE AO COLOCAR ESSES CARAS NO START DA "SEGFOU"*/
+				prct->getShape()->setTexture("texture/prctE.png");
+				prct->getShape()->changeSize(CoordF(PE_SIZE_X, PE_SIZE_Y));//Muda no StaticAnimation
+				prct->setSize(CoordF(PE_SIZE_X, PE_SIZE_Y));//Muda no Ente
+				prct->launch(this->getPos(), this->getSpeed());
+				cooldown = CE_CW;
+			}
 		}
 
 		void Chicken::collision(Entity* slamEntity, CoordF difference){
@@ -50,6 +71,10 @@ namespace Entities{
 				break;
 			case player:
 				this->damage(100.0f);
+				break;
+			case projectile:
+				if(slamEntity != prct)
+					this->damage(100.0f);
 				break;
 			default:
 				break;

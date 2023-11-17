@@ -11,6 +11,7 @@ public:
 	~StaticAnimation() = default;
 
 	void changeScale(float scale);
+	void changeSize(CoordF sizeTemp);
 	void updatePos(CoordF pos);
 	void plot();
 	void setTexture(const char* directory);

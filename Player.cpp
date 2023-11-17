@@ -9,11 +9,13 @@ namespace Entities{
 			start();		
 		}
 
-		Player::~Player(){}
+		Player::~Player(){
+			prct = NULL;
+		}
 
 		void Player::damage(const float damage){
 			setLife(getLife() - damage);
-			//printf("\n%f\n", damage);
+			printf("\n%f\n", damage);
 			if(getLife() <= 0.0f){
 				cout << "VOCE PERDEU" << endl;
 				exit(1);
@@ -47,17 +49,22 @@ namespace Entities{
 
 		void Player::start(){
 			this->getShape()->setTexture("texture/player.png");
-			prct->getShape()->setTexture("texture/prctP.png");
-			prct->setSize(CoordF(50.0f, 50.0f));
+			//prct->getShape()->setTexture("texture/prctP.png");
+			//prct->getShape()->changeSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no StaticAnimation
+			//prct->setSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no Ente
 			this->setID(player);
 			this->setLife(P_LIFE);
-			this->setSpeedX(0.0f);
+			stop();
 		}
 
 		void Player::collision(Entity* slamEntity, CoordF difference){
 			switch(slamEntity->getID()){ 
 			case chick:
 				this->damage(10.0f);
+				break;
+			case projectile:
+				if(slamEntity != prct)
+					this->damage(10.0f);
 				break;
 			case chicken:
 				this->damage(5.0f);
@@ -124,6 +131,10 @@ namespace Entities{
 		}
 
 		void Player::attack(){
+			/*VER PORQUE AO COLOCAR ESSES CARAS NO START DA "SEGFOU"*/
+			prct->getShape()->setTexture("texture/prctP.png");
+			prct->getShape()->changeSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no StaticAnimation
+			prct->setSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no Ente
 			prct->launch(this->getPos(), this->getSpeed());	
 		}
 

@@ -3,7 +3,7 @@
 namespace Entities{
 
 	MoveEntity::MoveEntity(CoordF posTemp, CoordF sizeTemp):
-	Entity(posTemp), live(true), time(0),
+	Entity(posTemp), live(true), time(0.0f),
 	shape(posTemp, sizeTemp){
 		this->setSize(sizeTemp);
 	}

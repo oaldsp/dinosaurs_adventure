@@ -12,6 +12,8 @@
 #define P_SPEED_X 350.0f
 #define P_SPEED_Y 300.0f
 #define P_M 	  150000.0f//massa
+#define PP_SIZE_X 25.0f //tamanho do projetil
+#define PP_SIZE_Y 25.0f
 
 namespace Entities{
 	namespace Creature{

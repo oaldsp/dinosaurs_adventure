@@ -37,7 +37,6 @@ namespace Entities{
 			this->setID(chick);
 			this->setLife(C_LIFE);
 			this->setSpeedX(C_SPEED_X);
-			setTime(0.0f);
 		}
 
 		void Chick::collision(Entity* slamEntity, CoordF difference){
@@ -51,6 +50,9 @@ namespace Entities{
 				moveAway(slamEntity,difference);
 				break;
 			case player:
+				this->damage(100.0f);
+				break;
+			case projectile:
 				this->damage(100.0f);
 				break;
 			default:

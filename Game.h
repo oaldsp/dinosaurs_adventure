@@ -33,6 +33,7 @@ private:
 	Entities::Projectile pp1;
 	Entities::Creature::Chick c1;
 	Entities::Creature::Chicken ce1;
+	Entities::Projectile pe1;
 	Entities::Creature::Rooster r1;
 
 	//objetos fixos

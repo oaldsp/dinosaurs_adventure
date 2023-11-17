@@ -5,7 +5,9 @@ StaticAnimation::StaticAnimation(CoordF pos, CoordF size):
 body(sf::Vector2f(size.x,size.y)){
 	body.setPosition(sf::Vector2f(pos.x, pos.y));
 	body.setScale(sf::Vector2f(1.0f, 1.0f));
-	//body.setTexture(Managers::GraphicsManager::getInstance()->loadTexture("texture/ground.jpg"));
+}
+void StaticAnimation::changeSize(CoordF sizeTemp){
+	body.setSize(sf::Vector2f(sizeTemp.x, sizeTemp.y));
 }
 
 void StaticAnimation::changeScale(float scale){

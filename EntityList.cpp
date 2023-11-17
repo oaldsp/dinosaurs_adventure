@@ -19,13 +19,25 @@ namespace List{
 	}
 
 	void EntityList::plot(){
-		/*Element<TL>* aux;// = list.getFirst();
-		while(NULL != aux){
-			(aux->getData)->plot();
-			aux = aux->getNext(); 
-		}*/
-	}
+		list.setActual(list.getFirst());
+		list.getActual()->getData()->plot();
 
+		while(list.getActual() != list.getLast()){
+			list.setActual(list.getActual()->getNext());
+			list.getActual()->getData()->plot(); 
+		}
+	}
+	
+	void EntityList::move(const float dT){
+		list.setActual(list.getFirst());
+		list.getActual()->getData()->move(dT);
+
+		while(list.getActual() != list.getLast()){
+			list.setActual(list.getActual()->getNext());
+			list.getActual()->getData()->move(dT); 
+		}
+	}
+	
 	unsigned int EntityList::getSize(){
 		return list.getSize();
 	}	
