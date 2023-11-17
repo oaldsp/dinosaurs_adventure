@@ -2,57 +2,111 @@
 
 namespace Entities{
 	namespace Creature{
-
-		Player::Player(CoordF  posTemp):
+		
+		Player::Player(CoordF  posTemp, Projectile* prctTemp):
 		Creature(posTemp, CoordF(P_SIZE_X,P_SIZE_Y)),
-		ctrl(this)
-		/*,isP1(true)*/{			
+		chao(true), ctrl(this), prct(prctTemp){			
 			start();		
 		}
 
-		void Player::damage(unsigned int damage){
-			int life = this->getLife();
-			life-=damage;
-			if(life <= 0){
+		Player::~Player(){
+			prct = NULL;
+		}
+
+		void Player::damage(const float damage){
+			setLife(getLife() - damage);
+			if(getLife() <= 0.0f){
 				cout << "VOCE PERDEU" << endl;
 				exit(1);
 			}	
 		}
 		
-		void Player::move(float dT){
+		void Player::move(const float dT){
 			CoordF posTemp = this->getPos();
 			CoordF speedTemp = this->getSpeed();
-			
-			time += dT;
-			
+
+			float a = getG();
+			if(getSpeed().y >= 0.0f)
+				a -=(getK()*getSize().x*getSize().x*speedTemp.y*speedTemp.y)/(2*P_M);
+			else
+				a +=(getK()*getSize().x*getSize().x*speedTemp.y*speedTemp.y)/(2*P_M);
+			/*
+				Formula da aceleracao considerando arasto
+					a = g - (K*x^2*v^2) /2m
+			 */
+			setTime(getTime() + dT);
+				
 			this->getShape()->updatePos(posTemp);	
-			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*time + G*time*time/2));
+			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*getTime() + a*getTime()*getTime()/2));
 			/*
 				USANDO FORMULA DE MRUV PARA DESLOCAMENTO EM Y
 				S=So+Vot+at^2/2
 			*/
+			
+			this->setSpeedY(getSpeed().y + a* dT);//V = V0 + at (ATUALIZA VELOCIDADE PARA PROXIMA EXECUCAO)
 		}
 
 		void Player::start(){
 			this->getShape()->setTexture("texture/player.png");
+			//prct->getShape()->setTexture("texture/prctP.png");
+			//prct->getShape()->changeSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no StaticAnimation
+			//prct->setSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no Ente
 			this->setID(player);
 			this->setLife(P_LIFE);
-			this->setSpeedX(0.0f);
-			time=0;
+			stop();
 		}
 
 		void Player::collision(Entity* slamEntity, CoordF difference){
 			switch(slamEntity->getID()){ 
+			case chick:
+				this->damage(10.0f);
+				break;
+			case projectile:
+				if(slamEntity != prct)
+					this->damage(10.0f);
+				break;
 			case chicken:
-				this->damage(101);
+				this->damage(5.0f);
+				break;
+			case rooster:
+				this->moveAway(slamEntity, difference);
+				this->repel(slamEntity);
+				if(slamEntity->getAttribute())
+					this->damage(25.0f);
+				else 
+					this->damage(10.0f);
 				break;
 			case ground:
-				time = 0.0f;//zero o tempo para o jump
+				chao = true;
+				setTime(0.0f);//zero o tempo para o jump
+				this->setSpeedY(slamEntity->getAttribute()*0.1f*getSpeed().y);
 				this->moveAway(slamEntity, difference);
+				break;
+			case petroleum:
+				chao = false;
+				setTime(0.0f);//zero o tempo para o jump
+				this->setSpeedX(getSpeed().x/(0.1f*slamEntity->getAttribute()));
+				this->moveAway(slamEntity, difference);
+				break;
+			case meteor:
+				this->moveAway(slamEntity, difference);
+				this->repel(slamEntity);
+				this->damage(10.0f*slamEntity->getAttribute());
 				break;
 			default:
 				break;
 			}	
+		}
+
+		void Player::repel(Entity* slamEntity){
+			if(this->getPos().x >= slamEntity->getPos().x)
+				setPos(CoordF(getPos().x + slamEntity->getSize().x, getPos().y));
+			else
+				setPos(CoordF(getPos().x - slamEntity->getSize().x, getPos().y));
+		}
+
+		int Player::getAttribute() const{
+			return 1;
 		}
 
 		Pcontrol* Player::getCtrl(){
@@ -60,8 +114,11 @@ namespace Entities{
 		}
 
 		void Player::jump(){
-			this->setPos(CoordF(getPos().x, getPos().y - 10.0f));
-			this->setSpeedY(-P_SPEED_Y);
+			if(chao){       	
+				this->setPos(CoordF(getPos().x, getPos().y - 10.0f));
+				this->setSpeedY(-P_SPEED_Y);
+			}
+			chao = false;
 		}
 
 		void Player::left(){
@@ -73,7 +130,11 @@ namespace Entities{
 		}
 
 		void Player::attack(){
-			
+			/*VER PORQUE AO COLOCAR ESSES CARAS NO START DA "SEGFOU"*/
+			prct->getShape()->setTexture("texture/prctP.png");
+			prct->getShape()->changeSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no StaticAnimation
+			prct->setSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no Ente
+			prct->launch(this->getPos(), this->getSpeed());	
 		}
 
 		void Player::stop(){

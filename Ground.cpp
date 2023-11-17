@@ -3,9 +3,10 @@
 namespace Entities{
 	namespace Obstacles{
 		Ground::Ground(CoordF  posTemp, CoordF sizeTemp):
-		StaticEntity(posTemp, sizeTemp){
-			this->getShape()->setTexture("texture/ground.jpg");
-			this->setID(ground);
+		Obstacle(posTemp, sizeTemp){
+			srand(std::time(NULL));
+			friction= rand()%3 + 1;
+			start();
 		}
 
 		void Ground::move(float dT){
@@ -13,10 +14,15 @@ namespace Entities{
 		}
 
 		void Ground::start(){
-		
+			this->getShape()->setTexture("texture/ground.jpg");
+			this->setID(ground);
 		}
 
 		void Ground::collision(Entity* slamEntity, CoordF difference){	
+		}
+
+		int Ground::getAttribute() const{
+			return friction;	
 		}
 	}//final do namespace Obstacles
 }//final do namespace Entities 

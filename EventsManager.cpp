@@ -1,29 +1,29 @@
-#include "Events.h"
+#include "EventsManager.h"
 
 //Inicializando atributo estatico
-Events* Events::instance = NULL;
+EventsManager* EventsManager::instance = NULL;
 
-Events::Events():
-pGrap(Managers::Graphics::getInstance()),
+EventsManager::EventsManager():
+pGrap(Managers::GraphicsManager::getInstance()),
 pInput(Input::getInstance()),
 pWindow(NULL){	
 	if(NULL != pGrap)
 		pWindow = pGrap->getWindow();
 }
 
-Events::~Events(){
+EventsManager::~EventsManager(){
 	pInput   = NULL;
 	pWindow  = NULL;
 	instance = NULL;
 }
 
-Events* Events::getInstance(){
+EventsManager* EventsManager::getInstance(){
 	if(NULL == instance)	
-		instance = new Events();
+		instance = new EventsManager();
 	return instance;
 }
 
-void Events::libraryEvents(){
+void EventsManager::libraryEvents(){
 	sf::Event event;
 	
 	while(pWindow->pollEvent(event)){

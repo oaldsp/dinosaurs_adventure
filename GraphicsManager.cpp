@@ -1,4 +1,4 @@
-#include "Graphics.h"
+#include "GraphicsManager.h"
 
 #include <cstring>
 #include <iostream>
@@ -14,23 +14,23 @@
 namespace Managers {
 
     /* Singleton design pattern - Only one instance will be created */
-    Graphics* Graphics::instance = nullptr;
+    GraphicsManager* GraphicsManager::instance = nullptr;
 
     /* Returns a pointer to the Graphics. */
-    Graphics* Graphics::getInstance() {
+    GraphicsManager* GraphicsManager::getInstance() {
         if (instance == nullptr) {
-            instance = new Graphics();
+            instance = new GraphicsManager();
         }
         return instance;
     }
 
-    Graphics::Graphics() :
+    GraphicsManager::GraphicsManager() :
     window(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "Game", /*sf::Style::Titlebar |*/ sf::Style::/*Fullscreen*/Default | sf::Style::Close)),
     view(sf::Vector2f(WIDTH / 2, HEIGHT / 2), sf::Vector2f(WIDTH, HEIGHT)),
     texturesMap(),
     fontsMap() { }
 
-    Graphics::~Graphics() {
+    GraphicsManager::~GraphicsManager() {
         std::map<const char*, sf::Texture*>::iterator it;
 
         for (it = texturesMap.begin(); it != texturesMap.end(); ++it) {
@@ -41,62 +41,62 @@ namespace Managers {
     }
 
     /* Give a pointer to a body and it will be drawn to the screen. */
-    void Graphics::render(sf::RectangleShape* body) {
+    void GraphicsManager::render(sf::RectangleShape* body) {
         window->draw(*body);
     }
 
     /* Give a pointer to a Text and it will be drawn to the screen */
-    void Graphics::render(sf::Text* text) {
+    void GraphicsManager::render(sf::Text* text) {
         window->draw(*text);
     }
 
     /* Display everything that was drawn. */
-    void Graphics::display() {
+    void GraphicsManager::display() {
         if (isWindowOpen())
             window->display();
     }
 
     /* Clear the window to re-display stuff. */
-    void Graphics::clear() {
+    void GraphicsManager::clear() {
         if (isWindowOpen())
             window->clear();
     }
 
     /* Returns if the window is open. */
-    bool Graphics::isWindowOpen() const {
+    bool GraphicsManager::isWindowOpen() const {
         return window->isOpen();
     }
 
     /* CAUTION: Call the close window function - SFML window will close. */
-    void Graphics::closeWindow() {
+    void GraphicsManager::closeWindow() {
         window->close();
     }
 
     /* Sets window size to its parameters */
-    void Graphics::setWindowSize(CoordU size) {
+    void GraphicsManager::setWindowSize(CoordU size) {
         window->setSize(sf::Vector2u(size.x, size.y));
         view.setSize(size.x, size.y);
         window->setView(view);
     }
 
     /* Returns the window size. */
-    CoordU Graphics::getWindowSize() const {
+    CoordU GraphicsManager::getWindowSize() const {
         return CoordU(window->getSize().x, window->getSize().y);
     }
 
     /* Returns the top left position of screen. */
-    CoordF Graphics::getTopLeftPosition() const {
+    CoordF GraphicsManager::getTopLeftPosition() const {
         return CoordF(window->getView().getCenter().x - window->getSize().x / 2, window->getView().getCenter().y - window->getSize().y / 2);
     }
 
     /* Changes the view position. */
-    void Graphics::centerView(CoordF pos) {
+    void GraphicsManager::centerView(CoordF pos) {
         view.setCenter(sf::Vector2f(pos.x, pos.y));
         window->setView(view);
     }
 
     /* Returns a texture to be used by an entity. */
-    sf::Texture* Graphics::loadTexture(const char* path) {
+    sf::Texture* GraphicsManager::loadTexture(const char* path) {
         /* Tries to find an existing texture linked by the path to it. */
         std::map<const char*, sf::Texture*>::iterator it = texturesMap.begin();
         while (it != texturesMap.end()) {
@@ -119,7 +119,7 @@ namespace Managers {
     }
 
     /* Returns a font pointer to be used by texts. */
-    sf::Font* Graphics::loadFont(const char* path) {
+    sf::Font* GraphicsManager::loadFont(const char* path) {
         /* Tries to find an existing font linked by the path to it */
         std::map<const char*, sf::Font*>::iterator it = fontsMap.begin();
         while (it != fontsMap.end()) {
@@ -141,11 +141,11 @@ namespace Managers {
         return font;
     }
 
-    sf::RenderWindow* Graphics::getWindow() const {
+    sf::RenderWindow* GraphicsManager::getWindow() const {
         return window;
     }
 
-    float Graphics::updateDeltaTime(){
+    float GraphicsManager::updateDeltaTime(){
     	dT = clk.getElapsedTime().asSeconds();
 	clk.restart();
 	

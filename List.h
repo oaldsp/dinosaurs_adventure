@@ -26,15 +26,20 @@ namespace List{
 		};
 		//Atributos:
 		Element<TL>* pFirst;
+		Element<TL>* pActual;
 		Element<TL>* pLast;
 		unsigned int size;
 		//Metodos:
-		Element<TL>* getFirst(){return pFirst;}
-		Element<TL>* getLast(){return pLast;}
 		void setElement(Element<TL>* pTemp);
 	public:
 		List();
 		~List();
+		
+		void setActual(Element<TL>* actualTemp){pActual = actualTemp;}
+		Element<TL>* getActual(){return pActual;}
+
+		Element<TL>* getFirst(){return pFirst;}
+		Element<TL>* getLast(){return pLast;}
 
 		unsigned int getSize();
 	

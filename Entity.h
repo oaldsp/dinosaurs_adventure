@@ -1,44 +1,32 @@
 #pragma once 
 
-#include "Coord.h"
-#include "StaticAnimation.h"
+#include "Ente.h"
 
-#define G 100.0f
+#define G 100.0f//gravidade
+#define K 10.0f //C*p*pi
+// C -> coeficiente de arrasto
+// p -> densidade do fluido 
 
 namespace Entities{
 
-	enum ID{
-		empty,
-		chicken,
-		player,
-		ground,
-		coin
-	};
-
-	class Entity{
+	class Entity: public Ente{
 	private:
-		CoordF pos;//posicao
-		CoordF size;
-		ID id;
+		static const float gravity;
+		static const float cte;
 	public:
 		Entity(CoordF posTemp = CoordF(0.f, 0.f));
 
-		~Entity();
-		
-		//set's
-		void setPos(CoordF posTemp);
-		void setSize(CoordF sizeTemp);
-		void setID(ID idTemp);
+		~Entity() = default;
 		
 		//get's
-		CoordF getSize() const;
-		CoordF getPos() const;
-		ID getID() const;
+		static float getG();
+	       	static float getK();
 
 		//metodos virtuais
 		virtual void plot() = 0;//plotar entity na tela
-		virtual void move(float dT) = 0;//mover entity
+		virtual void move(const float dT) = 0;//mover entity
 		virtual void start() = 0;//inicializar entity
 		virtual void collision(Entity* slamEntity, CoordF difference) = 0;
+		virtual int getAttribute() const =  0;
 	};
 }//final donamespace Entities

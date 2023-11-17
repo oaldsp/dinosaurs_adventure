@@ -1,20 +1,20 @@
 #pragma once 
 
-#include "Graphics.h"
+#include "GraphicsManager.h"
 #include "Input.h"
 
-class Events{
+class EventsManager{
 private:
-	Managers::Graphics* pGrap;
+	Managers::GraphicsManager* pGrap;
 	Input* pInput;
 	sf::RenderWindow* pWindow; 
 	
-	static Events* instance;
-	Events();
+	static EventsManager* instance;
+	EventsManager();
 public:
-	~Events();
+	~EventsManager();
 	
-	static Events* getInstance();
+	static EventsManager* getInstance();
 
 	void  libraryEvents();// ve quais eventos a ibiblioteca chamou e repassa essas chamas para o gerenciador grafico
 };

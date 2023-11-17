@@ -2,15 +2,22 @@
 
 #include "Obstacle.h"
 
+#define M_SIZE_X  30.0f
+#define M_SIZE_Y  30.0f
+#define M_SPEED_X 0.0f
+#define M_SPEED_Y 0.0f
+#define M_M 	  4000.0f//massa
+
 namespace Entities{
 	namespace Obstacles{ 
 
-		class Ground: public Obstacle{
+		class Meteor: public Obstacle{
 		private:
-			int friction;
+			float time;
+			int riskLevel;
 		public:
-			Ground(CoordF posTemp = CoordF(0.0f,0.0f), CoordF sizeTemp = CoordF(0.0f,0.0f));
-			~Ground() = default;
+			Meteor(CoordF posTemp = CoordF(0.0f,0.0f));
+			~Meteor() = default;
 
 			//metodos virtuais puros
 			void move(const float dT);
@@ -20,3 +27,4 @@ namespace Entities{
 		};
 	}//final do namespace Obstacles
 }//final do namespace Entity
+
