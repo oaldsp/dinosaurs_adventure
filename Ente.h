@@ -4,16 +4,16 @@
 #include "StaticAnimation.h"
 
 enum ID{
-		empty,
-		chicken,
-		player,
-		ground,
-		meteor,
-		coin,
-		petroleum,
-		rooster,
-		projectile,
-		chick
+		empty,	   //0
+		chicken,   //1
+		player,	   //2
+		ground,	   //3
+		meteor,	   //4
+		coin,	   //5
+		petroleum, //6
+		rooster,   //7
+		projectile,//8
+		chick	   //9
 	};
 
 class Ente{

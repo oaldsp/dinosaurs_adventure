@@ -7,7 +7,7 @@ GC(&mE,&sE),
 pEvents(EventsManager::getInstance()),
 pGrap(GraphicsManager::getInstance()),
 background(CoordF(-384.0f - 300.0f, 0.0f), CoordF(3*1366.0f, 768.0f)),
-pp1(&pp1),
+pp1(&p1),
 p1(CoordF(300.f,250.f), &pp1),
 c1(CoordF(100.0f, 100.f)),
 pe1(&ce1),
@@ -30,10 +30,10 @@ void Game::start(){
 
 	mE.addEntity(&p1);
 	mE.addEntity(&c1);
-	//mE.addEntity(&ce1);
+	mE.addEntity(&ce1);
 	mE.addEntity(&r1);
 	mE.addEntity(&pp1);
-	//mE.addEntity(&pe1);
+	mE.addEntity(&pe1);
 
 	sE.addEntity(&e1);
 	sE.addEntity(&m1);

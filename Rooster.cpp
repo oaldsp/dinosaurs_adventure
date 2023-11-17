@@ -5,7 +5,7 @@ namespace Entities{
 
 		Rooster::Rooster(CoordF  posTemp):
 		Enemy(posTemp, CoordF(R_SIZE_X, R_SIZE_Y)),
-		protect(0){
+		cooldown(R_CW), protect(0){
 			start();
 		}
 
@@ -19,7 +19,10 @@ namespace Entities{
 					a = g - (K*x^2*v^2) /2m
 			 */
 			
-			setTime(getTime() + dT);	
+			setTime(getTime() + dT);
+			cooldown -= dT;	
+			
+			reset();
 			
 			this->getShape()->updatePos(posTemp);	
 			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*getTime() + a*getTime()*getTime()/2));
@@ -36,6 +39,14 @@ namespace Entities{
 			this->setID(rooster);
 			this->setLife(R_LIFE);
 			this->setSpeedX(R_SPEED_X);
+		}
+
+		void Rooster::reset(){
+			if(cooldown <= 0.0f){
+				protect = false;
+				setSpeedX(R_SPEED_X);
+				cooldown = R_CW;
+			}
 		}
 
 		void Rooster::collision(Entity* slamEntity, CoordF difference){

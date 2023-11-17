@@ -5,13 +5,13 @@
 
 #define CE_SIZE_X  40.0f
 #define CE_SIZE_Y  40.0f
-#define CE_LIFE	  100.0f
+#define CE_LIFE	   100.0f
 #define CE_SPEED_Y 0.0F
 #define CE_SPEED_X 0.0f
 #define CE_M 	   50000.0f         
-#define PE_SIZE_X 20.0f//tamhano do projetil
-#define PE_SIZE_Y 20.0f
-#define CE_CW 	  5.0f//cooldown
+#define PE_SIZE_X  20.0f//tamhano do projetil
+#define PE_SIZE_Y  20.0f
+#define CE_CW 	   2.5f//cooldown
 
 namespace Entities{
 	namespace Creature{

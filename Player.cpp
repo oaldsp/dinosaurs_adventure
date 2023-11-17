@@ -15,7 +15,6 @@ namespace Entities{
 
 		void Player::damage(const float damage){
 			setLife(getLife() - damage);
-			printf("\n%f\n", damage);
 			if(getLife() <= 0.0f){
 				cout << "VOCE PERDEU" << endl;
 				exit(1);

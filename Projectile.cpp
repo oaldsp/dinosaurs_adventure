@@ -76,9 +76,9 @@ namespace Entities{
 		case chicken:
 			reset(slamEntity);
 			break;
-		/*case player:
+		case player:
 			reset(slamEntity);	
-			break;*/
+			break;
 		default:
 			break;
 		}
