@@ -5,7 +5,7 @@
 #include <vector>
 
 class Menu: public Ente{
-private:
+protected:
 	std::vector<Text*> VText;
 	std::vector<Text*>::iterator it;
        	int selected;
@@ -17,5 +17,9 @@ private:
 public:
 	Menu(CoordF posTemp);
 	virtual ~Menu();
-	virtual void exe() = 0;
+
+	virtual void op1() = 0;
+	virtual void op2() = 0;
+	virtual void op3() = 0;
+	virtual void op4() = 0;
 };

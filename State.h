@@ -7,6 +7,7 @@ enum stateID{
 	unknown,
 	menu,
 	level1,
+	level2
 };
 
 class State{

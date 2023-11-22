@@ -14,13 +14,13 @@ void Mcontrol::pressed(std::string keyTemp){
 		std::cout<<"ponteiro do player nulo"<<std::endl;
 		exit(1);
 	}if(keyTemp == op1){
-		//pMenu->jump();
+		pMenu->op1();
 	}if(keyTemp == op2){
-		//pMenu->left();
+		pMenu->op2();
 	}if(keyTemp == op3){
-		//pMenu->right();
+		pMenu->op3();
 	}if(keyTemp == op4){
-		//pMenu->attack();
+		pMenu->op4();
 	}
 }
 

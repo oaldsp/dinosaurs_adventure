@@ -5,9 +5,9 @@ Text::Text(CoordF posTemp, std::string infoTemp):Ente(posTemp){
 	info = infoTemp;
 	text.setString(infoTemp);
 	text.setOrigin(0.0f, 0.0f);
-	text.setCharacterSize(10);
+	text.setCharacterSize(1000);
 	text.setPosition(sf::Vector2f(posTemp.x, posTemp.y));
-	text.setFillColor(sf::Color::Black);
+	text.setFillColor(sf::Color::Red);
 }
 
 void Text::setFSize(const unsigned int sizeTemp){
@@ -19,5 +19,15 @@ void Text::setColor(const unsigned int r,const unsigned int g,const unsigned int
 }
 
 void Text::plot(){
+	for(int i=0; i<1000;i++)
+		printf("DDDDDD");
 	getGrap()->render(&text);
+}
+
+void Text::move(const float dT){
+
+}
+
+void Text::start(){
+
 }

@@ -17,4 +17,6 @@ public:
 	void setColor(const unsigned int r,const unsigned int g, const unsigned int b);
 	
 	void plot();
+	void move(const float dT);
+	void start();
 };
