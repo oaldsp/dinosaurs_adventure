@@ -3,7 +3,7 @@
 namespace Entities{
 
 	MoveEntity::MoveEntity(CoordF posTemp, CoordF sizeTemp):
-	Entity(posTemp), live(true), time(0.0f),
+	Entity(posTemp), live(true),
 	shape(posTemp, sizeTemp){
 		this->setSize(sizeTemp);
 	}
@@ -20,14 +20,6 @@ namespace Entities{
 		live = temp;
 	}
 	
-	float MoveEntity::getTime() const{
-		return time;
-	}
-
-	void MoveEntity::setTime(const float timeTemp){
-		time=timeTemp;
-	}
-
 	StaticAnimation* MoveEntity::getShape(){
 		return &shape;
 	}

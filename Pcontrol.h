@@ -3,7 +3,7 @@
 #include "Observer.h"
 
 namespace Entities::Creature{
-	class Player;
+	class Player;//porcausa do include bidirecional
 }
 
 class Pcontrol: public Observer{

@@ -2,9 +2,18 @@
 
 namespace Entities::Obstacles{
 	
-	unsigned int Obstacle::ObstacleTotal = 0;
+	unsigned int Obstacle::obstacleTotal = 0;
+	const float Obstacle::normal = getG();
 
 	Obstacle::Obstacle(CoordF posTemp, CoordF sizeTemp):StaticEntity(posTemp, sizeTemp){
-		ObstacleTotal++;
+		obstacleTotal++;
+	}
+
+	Obstacle::~Obstacle(){
+		obstacleTotal--;
+	}
+
+	float Obstacle::getN(){
+		return normal;
 	}
 }//Final do namespace Entities::Obstacle

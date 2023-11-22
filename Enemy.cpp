@@ -3,14 +3,18 @@
 namespace Entities{
 	namespace Creature{
 
-		unsigned int Enemy::EnemyTotal = 0;
+		unsigned int Enemy::enemyTotal = 0;
 
 		Enemy::Enemy(CoordF  posTemp, CoordF sizeTemp):
 		Creature(posTemp, sizeTemp)
 		{
-			EnemyTotal++;
+			enemyTotal++;
 		}
-		
+	
+		Enemy::~Enemy(){
+			enemyTotal--;
+		}
+
 		void Enemy::damage(const float damage){
 			setLife(getLife() - damage);
 			if(getLife() <= 0.0f)

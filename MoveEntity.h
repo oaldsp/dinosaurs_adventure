@@ -8,7 +8,6 @@ namespace Entities{
 	class MoveEntity:public Entity{
 	private:
 		bool live;
-		float time;
 		StaticAnimation shape;
 	public:
 		MoveEntity(CoordF posTemp = CoordF(0.f, 0.f), CoordF sizeTemp = CoordF(0.f, 0.f));
@@ -18,9 +17,6 @@ namespace Entities{
 		
 		bool getLive();
 		void setLive(bool temp);
-		
-		float getTime() const;
-		void setTime(const float timeTemp);
 		
 		StaticAnimation* getShape();
 

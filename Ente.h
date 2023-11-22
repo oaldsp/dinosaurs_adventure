@@ -2,6 +2,7 @@
 
 #include "Coord.h"
 #include "StaticAnimation.h"
+#include "GraphicsManager.h"
 
 enum ID{
 		empty,	   //0
@@ -21,6 +22,7 @@ private:
 	CoordF pos;//posicao
 	CoordF speed;
 	CoordF size;
+	static Managers::GraphicsManager* pGrap;
 	ID id;
 public:
 	Ente(CoordF posTemp);
@@ -38,6 +40,7 @@ public:
 	CoordF getPos() const;
 	ID getID() const;
 	CoordF getSpeed() const;
+	static Managers::GraphicsManager* getGrap();
 
 	//metodos virtuais
 	virtual void plot() = 0;//plotar entity na tela

@@ -13,6 +13,7 @@ namespace Entities{
 	private:
 		static const float gravity;
 		static const float cte;
+		float time;
 	public:
 		Entity(CoordF posTemp = CoordF(0.f, 0.f));
 
@@ -21,6 +22,9 @@ namespace Entities{
 		//get's
 		static float getG();
 	       	static float getK();
+
+		float getTime() const;
+		void setTime(const float timeTemp);
 
 		//metodos virtuais
 		virtual void plot() = 0;//plotar entity na tela

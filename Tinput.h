@@ -5,6 +5,7 @@
 
 class Tinput: public Observer{
 private:
+	std::string name;
 public:
 	Tinput() = default;
 	~Tinput() = default;

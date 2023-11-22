@@ -13,7 +13,6 @@ namespace Entities{
 
 		class Meteor: public Obstacle{
 		private:
-			float time;
 			int riskLevel;
 		public:
 			Meteor(CoordF posTemp = CoordF(0.0f,0.0f));

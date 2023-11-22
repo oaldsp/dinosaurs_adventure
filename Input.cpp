@@ -10,6 +10,11 @@ Input::Input(){
 	keysMap[sf::Keyboard::W] = "W";
 	keysMap[sf::Keyboard::S] = "S";
 	keysMap[sf::Keyboard::D] = "D";
+	keysMap[sf::Keyboard::Num0] = "1";
+	keysMap[sf::Keyboard::Num1] = "2";
+	keysMap[sf::Keyboard::Num2] = "3";
+	keysMap[sf::Keyboard::Num3] = "4";
+
 }
 
 Input::~Input(){
