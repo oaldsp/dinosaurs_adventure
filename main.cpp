@@ -8,6 +8,7 @@
 
 int main()
 {
+	printf("flagmain");
 	Game name_of_game;
 	
 	return 0;

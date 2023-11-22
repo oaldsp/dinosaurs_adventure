@@ -6,16 +6,18 @@ enum stateID{
 	//Ao adicionar estados aumentar indice na destrutora do SateteMachine tb
 	unknown,
 	menu,
-	level1,
+	level1
 };
 
 class State{
 private:
-	StateMachine* pMachi;
+	static StateMachine* pMachi;
 	stateID id;
 public:
-	State(StateMachine* pMachiTemp = nullptr, stateID idTemp = unknown);
+	State(stateID idTemp = unknown);
 	virtual ~State();
+
+	void set_StateMachine(StateMachine* pMachiTemp);
 
 	void changeState(stateID idTemp);
 

@@ -13,36 +13,18 @@
 #include "CollisionManager.h"
 #include "EventsManager.h"
 #include "EntityList.h"
+#include "LevelOne.h"
+#include "StateMachine.h"
 
 class Game{
 private:
-	//colisoes
-	List::EntityList mE;
-	List::EntityList sE;
-	Managers::CollisionManager GC;
+	LevelOne level_one;
 	
-	//Eventos
 	EventsManager* pEvents;
+	StateMachine* pStateMachine;
 
 	//grafico	
 	Managers::GraphicsManager* pGrap; 	
-	StaticAnimation background; 
-	
-	//objetos vivos
-	Entities::Creature::Player p1;
-	Entities::Projectile pp1;
-	Entities::Creature::Chick c1;
-	Entities::Creature::Chicken ce1;
-	Entities::Projectile pe1;
-	Entities::Creature::Rooster r1;
-
-	//objetos fixos
-	Entities::Obstacles::Petroleum e1;
-	Entities::Obstacles::Meteor m1;
-	Entities::Obstacles::Ground g1;
-	Entities::Obstacles::Ground g2;
-	Entities::Obstacles::Ground w1; 
-	Entities::Obstacles::Ground w2; 
 public:
 	Game();
 	~Game() = default;

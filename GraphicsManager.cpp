@@ -21,6 +21,7 @@ namespace Managers {
         if (instance == nullptr) {
             instance = new GraphicsManager();
         }
+        printf("flagGM");
         return instance;
     }
 

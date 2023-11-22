@@ -3,6 +3,9 @@
 #include "Coord.h"
 #include "StaticAnimation.h"
 
+#include <SFML/Graphics.hpp>
+#include "GraphicsManager.h"
+
 enum ID{
 		empty,	   //0
 		chicken,   //1
@@ -22,6 +25,8 @@ private:
 	CoordF speed;
 	CoordF size;
 	ID id;
+protected:
+	static Managers::GraphicsManager* pGM;
 public:
 	Ente(CoordF posTemp);
 	~Ente() = default;

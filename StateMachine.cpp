@@ -1,11 +1,27 @@
 #include "StateMachine.h"
 #include <iostream>
 
-StateMachine::StateMachine():id(unknown){}
+StateMachine* StateMachine::instance = nullptr;
+
+StateMachine* StateMachine::getInstance() 
+{
+    if (instance == nullptr) 
+    {
+        instance = new StateMachine();
+    }
+    return instance;
+}
+
+StateMachine::StateMachine():
+    id(unknown)
+{
+	printf("flagSM");
+    //states.resize(3);
+}
 
 StateMachine::~StateMachine(){
-	for(int i=0; i<2; i++)
-		delete states[i];
+for(int i=0; i<2; i++)
+	delete states[i];
 }
 
 void StateMachine::changeState(stateID idTemp){

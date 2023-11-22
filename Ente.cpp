@@ -1,5 +1,7 @@
 #include "Ente.h"
 
+Managers::GraphicsManager* Ente::pGM = Managers::GraphicsManager::getInstance();
+
 Ente::Ente(CoordF posTemp):pos(posTemp), speed(CoordF(0.0f,0.0f)){}
 
 void Ente::setPos(CoordF posTemp){
