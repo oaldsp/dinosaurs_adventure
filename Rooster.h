@@ -6,7 +6,7 @@
 #define R_SIZE_Y  60.0f
 #define R_LIFE	  300.0f
 #define R_SPEED_Y 50.0F
-#define R_SPEED_X 100.0f
+#define R_SPEED_X -100.0f
 #define R_M 	  50000.0f        
 #define R_CW	  5.0f
 

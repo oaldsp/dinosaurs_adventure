@@ -1,13 +1,13 @@
 #pragma once
 
-#include <vector>
+#include <map>
 
 #include "State.h"
 
 class StateMachine{
 protected:
 	stateID id;
-	std::vector<State*> states;
+	std::map<stateID,State*> states;
 	static StateMachine* instance;
     StateMachine();
 public:

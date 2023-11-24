@@ -13,15 +13,16 @@ StateMachine* StateMachine::getInstance()
 }
 
 StateMachine::StateMachine():
-    id(unknown)
+    id(level1)
 {
-	printf("flagSM");
-    //states.resize(3);
+
 }
 
 StateMachine::~StateMachine(){
-for(int i=0; i<2; i++)
-	delete states[i];
+std::map<stateID, State*>::iterator it;
+
+	for(it = states.begin(); it != states.end(); it++)
+		delete (it->second);
 }
 
 void StateMachine::changeState(stateID idTemp){
@@ -30,6 +31,7 @@ void StateMachine::changeState(stateID idTemp){
 }
 
 void StateMachine::exe(const float dt){
+	//std::cout << states[id]<< '\n';
 	states[id]->move(dt);
 	states[id]->plot();
 }

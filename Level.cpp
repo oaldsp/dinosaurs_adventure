@@ -1,7 +1,7 @@
 #include "Level.h"
 
     Level::Level(stateID id):
-    Ente(CoordF(- 300.0f, 0.0f)),//tirar posicao da construtora da Ente pq n faz sentido por no level ?
+    Ente(CoordF(0.0f, 0.0f)),//tirar posicao da construtora da Ente pq n faz sentido por no level ?
     State(id),
     list_o(),
     list_c(),
@@ -51,54 +51,48 @@
         std::srand(std::time(NULL));
 
         Entities::Entity* aux = NULL;
-        int nextPos = 50;
+        float nextPos = 0;
         int numE = 0;
 
-        while(numE<3){
-            numE = rand()%7;
-        }
-        for(int i=0;i<numE;i++){
-            aux = new Entities::Creature::Chick(CoordF((i*nextPos)+100.0f, 100.f));
-            add_enemy(static_cast<Entities::Entity*>(aux));
+        while(numE<4 && nextPos<5){
+            numE = rand()%8;
+            nextPos = rand()%15;
         }
 
-        while(numE<3){
-            numE = rand()%7;
-        }
+        nextPos=5000/nextPos;
 
         for(int i=0;i<numE;i++){
-            aux = new Entities::Creature::Chicken(CoordF((i*nextPos)+1100.0f, 100.f));
+            aux = new Entities::Creature::Chick(CoordF((i*nextPos)+371.0f, 300.f));
             add_enemy(static_cast<Entities::Entity*>(aux));
         }
-
-        //aux = new Entities::Creature::Player(CoordF(300.f,250.f), &pp1); //criar um create_players quando parar de dar segfau
-        //add_player(static_cast<Entities::Entity*>(aux));
     }
 
     void Level::create_scenario()
     {
         Entities::Entity* aux = nullptr;
         std::srand(std::time(NULL)); //aleatorio
-        int numO = 0;
-        int nextP = 60;
 
-        while(numO<10){
-            numO = rand()%20;
-        }
-
+        int numO = 15;
+        float nPos = 0.0;
+        
         for(int i=0;i<numO;i++){
-            aux = new Entities::Obstacles::Ground(CoordF((i*nextP)+0.0f,300.0f), CoordF(600.0f,50.0f));
+            aux = new Entities::Obstacles::Ground(CoordF((i*600)+0.0f,600.0f), CoordF(600.0f,50.0f));
             add_obstacle(static_cast<Entities::Entity*>(aux));
         }
-
-        while(numO<3){
+        
+        numO=0;
+        nPos=0;
+        
+        while(numO<5 || nPos<5.0){
             numO = rand()%7;
+            nPos = rand()%10;
         }
-
+        
+        nPos = 8000/nPos;
+        
         for(int i=0;i<numO;i++){
-            aux = new Entities::Obstacles::Petroleum(CoordF((i*nextP)+600.0f,300.0f), CoordF(150.0f,50.0f));
+            aux = new Entities::Obstacles::Ground(CoordF((i*nPos)+0.0f,195.0f), CoordF(50.0f,400.0f));
             add_obstacle(static_cast<Entities::Entity*>(aux));
         }
-
 
     }

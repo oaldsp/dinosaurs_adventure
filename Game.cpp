@@ -3,11 +3,11 @@
 using namespace Managers;
 
 Game::Game():
-//GC(&mE,&sE),
 pStateMachine(StateMachine::getInstance()),
 pEvents(EventsManager::getInstance()),
 pGrap(GraphicsManager::getInstance()),
-level_one()
+level_one(),
+level_two()
 /*background(CoordF(-384.0f - 300.0f, 0.0f), CoordF(3*1366.0f, 768.0f)),//pos,size
 pp1(&p1),
 p1(CoordF(300.f,250.f), &pp1),
@@ -27,23 +27,6 @@ w2(CoordF(0.0f,250.0f), CoordF(50.0f,50.0f))*/{
 }
 
 void Game::start(){
-	/*background.setTexture("texture/background.jpg");
-
-	p1.getCtrl()->setKeys("W","A","D","S");
-
-	mE.addEntity(&p1);
-	mE.addEntity(&c1);
-	mE.addEntity(&ce1);
-	mE.addEntity(&r1);
-	mE.addEntity(&pp1);
-	mE.addEntity(&pe1);
-
-	sE.addEntity(&e1);
-	sE.addEntity(&m1);
-	sE.addEntity(&g1);
-	sE.addEntity(&g2);
-	sE.addEntity(&w1);
-	sE.addEntity(&w2);*/
 }
 
 void Game::exe(){
@@ -52,9 +35,9 @@ void Game::exe(){
 	while(pGrap->isWindowOpen()){
 		dt = pGrap->updateDeltaTime();
 		pGrap->clear();
-		//pGrap->centerView(CoordF(p1.getPos().x, 384.0f));
 
 		pEvents->libraryEvents();
+		//printf("\n");
 		pStateMachine->exe(dt);
 
 		pGrap->display();

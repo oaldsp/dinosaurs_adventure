@@ -14,6 +14,7 @@ namespace Entities{
 		}
 
 		void Chicken::move(float dT){
+			std::cout << "move" << std::endl;
 			CoordF posTemp = this->getPos();
 			CoordF speedTemp = this->getSpeed();
 		
@@ -36,6 +37,7 @@ namespace Entities{
 			*/
 			
 			this->setSpeedY(getSpeed().y + a* dT);//V = V0 + at (ATUALIZA VELOCIDADE PARA PROXIMA EXECUCAO)
+			std::cout << "2move" << std::endl;
 		}
 
 		void Chicken::start(){
@@ -49,17 +51,22 @@ namespace Entities{
 		}
 		
 		void Chicken::attack(){
+			/**/
+			std::cout << "attack" << std::endl;
 			if(cooldown <= 0.0f){
 				/*VER PORQUE AO COLOCAR ESSES CARAS NO START DA "SEGFOU"*/
-				prct->getShape()->setTexture("texture/prctE.png");
-				prct->getShape()->changeSize(CoordF(PE_SIZE_X, PE_SIZE_Y));//Muda no StaticAnimation
-				prct->setSize(CoordF(PE_SIZE_X, PE_SIZE_Y));//Muda no Ente
-				prct->launch(this->getPos(), this->getSpeed());
+				//prct->getShape()->setTexture("texture/prctE.png");
+				//prct->getShape()->changeSize(CoordF(PE_SIZE_X, PE_SIZE_Y));//Muda no StaticAnimation
+				//prct->setSize(CoordF(PE_SIZE_X, PE_SIZE_Y));//Muda no Ente
+				//prct->launch(this->getPos(), this->getSpeed());
 				cooldown = CE_CW;
 			}
+			std::cout << "2attack" << std::endl;
+			/**/
 		}
 
 		void Chicken::collision(Entity* slamEntity, CoordF difference){
+			std::cout << "collision with" << slamEntity->getID() << std::endl;
 			switch(slamEntity->getID()){ 
 			case ground:
 				setTime(0.0f);//zero o tempo para o jump
@@ -79,6 +86,7 @@ namespace Entities{
 			default:
 				break;
 			}	
+			std::cout << "done colliding" << std::endl;
 		}
 
 		int Chicken::getAttribute() const{

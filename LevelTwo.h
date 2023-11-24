@@ -2,7 +2,7 @@
 
 #include "Level.h"
 
-class LevelOne : public Level
+class LevelTwo : public Level
 {
     private:
         int finish;
@@ -10,16 +10,16 @@ class LevelOne : public Level
         Entities::Creature::Player p1;
     	Entities::Projectile pp1;
     public:
-        LevelOne();
-        ~LevelOne();
+        LevelTwo();
+        ~LevelTwo();
         
         void move(const float dt);
         void plot();
         void reset();
 
-        void createC();
         void createP();
-        void createPlayer();
+        void createR();
+        void createM();
 
         void start();
 };

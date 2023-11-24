@@ -15,10 +15,12 @@
 #include "EntityList.h"
 #include "LevelOne.h"
 #include "StateMachine.h"
+#include "LevelTwo.h"
 
 class Game{
 private:
 	LevelOne level_one;
+	LevelTwo level_two;
 	
 	EventsManager* pEvents;
 	StateMachine* pStateMachine;

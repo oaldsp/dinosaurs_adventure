@@ -3,6 +3,7 @@
 #include "Ente.h"
 #include "Entity.h"
 #include "Player.h"
+#include "Projectile.h"
 #include "Meteor.h"
 #include "Petroleum.h"
 #include "Ground.h"
