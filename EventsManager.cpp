@@ -7,7 +7,6 @@ EventsManager::EventsManager():
 pGrap(Managers::GraphicsManager::getInstance()),
 pInput(Input::getInstance()),
 pWindow(NULL){	
-	printf("flagEM");
 	if(NULL != pGrap)
 		pWindow = pGrap->getWindow();
 }

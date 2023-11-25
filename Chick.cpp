@@ -42,10 +42,14 @@ namespace Entities{
 		void Chick::collision(Entity* slamEntity, CoordF difference){
 			switch(slamEntity->getID()){ 
 			case ground:
+				if(difference.x >= difference.y)
+					setSpeedX(-getSpeed().x);
 				setTime(0.0f);//zero o tempo para o jump
 				moveAway(slamEntity,difference);
 				break;
 			case petroleum:
+				if((difference.x >= difference.y) && rand()%2)
+					setSpeedX(-getSpeed().x);
 				setTime(0.0f);//zero o tempo para o jump
 				moveAway(slamEntity,difference);
 				break;

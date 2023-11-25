@@ -13,7 +13,7 @@ StateMachine* StateMachine::getInstance()
 }
 
 StateMachine::StateMachine():
-    id(level1)
+    id(menu)
 {
 
 }

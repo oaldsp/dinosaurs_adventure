@@ -2,8 +2,8 @@
 
 #include "Obstacle.h"
 
-#define M_SIZE_X  30.0f
-#define M_SIZE_Y  30.0f
+#define M_SIZE_X  20.0f
+#define M_SIZE_Y  20.0f
 #define M_SPEED_X 0.0f
 #define M_SPEED_Y 0.0f
 #define M_M 	  4000.0f//massa

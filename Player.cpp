@@ -47,10 +47,11 @@ namespace Entities{
 		}
 
 		void Player::start(){
+			prct = new Projectile(this);
 			this->getShape()->setTexture("texture/player.png");
-			//prct->getShape()->setTexture("texture/prctP.png");
-			//prct->getShape()->changeSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no StaticAnimation
-			//prct->setSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no Ente
+			prct->getShape()->setTexture("texture/prctP.png");
+			prct->getShape()->changeSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no StaticAnimation
+			prct->setSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no Ente
 			this->setID(player);
 			this->setLife(P_LIFE);
 			stop();
@@ -104,7 +105,7 @@ namespace Entities{
 			else
 				setPos(CoordF(getPos().x - slamEntity->getSize().x, getPos().y));
 		}
-
+	
 		int Player::getAttribute() const{
 			return 1;
 		}

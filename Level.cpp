@@ -43,7 +43,7 @@
         if (player)
         {
             list_c.addEntity(player);
-        }
+	}
     }
 
     void Level::create_enemy()
@@ -51,18 +51,18 @@
         std::srand(std::time(NULL));
 
         Entities::Entity* aux = NULL;
-        float nextPos = 0;
-        int numE = 0;
+        float nextPos = 8000/(rand()%10 + 5);
+        int numE = rand()%4 + 6;
 
-        while(numE<4 && nextPos<5){
+        /*while(numE<4 && nextPos<5){
             numE = rand()%8;
             nextPos = rand()%15;
         }
 
-        nextPos=5000/nextPos;
+        nextPos=5000/nextPos;*/
 
         for(int i=0;i<numE;i++){
-            aux = new Entities::Creature::Chick(CoordF((i*nextPos)+371.0f, 300.f));
+            aux = new Entities::Creature::Chick(CoordF((i*nextPos) + 371.0f + rand()%10, 300.f));
             add_enemy(static_cast<Entities::Entity*>(aux));
         }
     }
@@ -72,27 +72,33 @@
         Entities::Entity* aux = nullptr;
         std::srand(std::time(NULL)); //aleatorio
 
-        int numO = 15;
+        int numO = 13;
         float nPos = 0.0;
-        
+       
+       //chao	
         for(int i=0;i<numO;i++){
-            aux = new Entities::Obstacles::Ground(CoordF((i*600)+0.0f,600.0f), CoordF(600.0f,50.0f));
+            aux = new Entities::Obstacles::Ground(CoordF((i*600)+0.0f,600.0f), CoordF(600.0f,168.0f));
             add_obstacle(static_cast<Entities::Entity*>(aux));
         }
         
-        numO=0;
-        nPos=0;
+        numO= rand()%2 + 7;
+        nPos= 8000/(rand()%5 + 5);
         
-        while(numO<5 || nPos<5.0){
+        /*while(numO<5 || nPos<5.0){
             numO = rand()%7;
             nPos = rand()%10;
         }
         
-        nPos = 8000/nPos;
+        nPos = 8000/nPos;*/
         
+	//parede
         for(int i=0;i<numO;i++){
-            aux = new Entities::Obstacles::Ground(CoordF((i*nPos)+0.0f,195.0f), CoordF(50.0f,400.0f));
+            aux = new Entities::Obstacles::Ground(CoordF((i*nPos) + rand()%10, 195.0f), CoordF(50.0f,400.0f));
             add_obstacle(static_cast<Entities::Entity*>(aux));
         }
+	
+	//Para não cair no final do mapa
+	aux = new Entities::Obstacles::Ground(CoordF(7740.0f + rand()%10, 195.0f), CoordF(50.0f,400.0f));
+        add_obstacle(static_cast<Entities::Entity*>(aux));
 
     }

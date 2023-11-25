@@ -7,7 +7,6 @@ LevelTwo::LevelTwo():
     pp1(&p1),
     p1(CoordF(300.f,250.f), &pp1)
     {
-        //printf("    LEVEL   ");
         background.setTexture("texture/background.jpg");
         start();
     }
@@ -20,13 +19,16 @@ LevelTwo::LevelTwo():
     void LevelTwo::move(const float dt)
     {
         pGM->centerView(CoordF(p1.getPos().x, 384.0f));//tem que trocar para o player
-        //printf("dentro de level");
         list_c.move(dt);
         list_o.move(dt);
 
         collision_manager.collide();
         background.updatePos(CoordF(p1.getPos().x-700.0f,0.0f));
-
+	
+	if(p1.getPos().x >= 7600.0f){
+		cout << "VOCE GANHOU" << endl;
+		exit(1);
+	}	
     }
 
     void LevelTwo::plot()
@@ -34,8 +36,8 @@ LevelTwo::LevelTwo():
         draw();
         background.plot();
 
-        list_c.plot();
         list_o.plot();
+	list_c.plot();
     }
 
     void LevelTwo::createR()
@@ -44,16 +46,13 @@ LevelTwo::LevelTwo():
 
         Entities::Entity* aux = NULL;
 
-        float numP=0.0;
+        float nextPos = 8000/(rand()%10 + 5);
+       	int numR = rand()%2 + 3;
         
-        while(numP<8000){
-            numP = rand()%9000;
-        }
-
-        aux = new Entities::Creature::Rooster(CoordF((numP)+0.0f, 300.f));
-        list_c.addEntity(static_cast<Entities::Entity*>(aux));
-        
-        //printf("    EM createR    ");
+       	for(int i=0; i < numR ; i++){
+        	aux = new Entities::Creature::Rooster(CoordF((i*nextPos) + 1800.0f + rand()%10, 300.f));
+        	list_c.addEntity(static_cast<Entities::Entity*>(aux));
+	}
     }
 
     void LevelTwo::createM()
@@ -62,17 +61,11 @@ LevelTwo::LevelTwo():
 
         Entities::Entity* aux = NULL;
 
-        int numO=0;
-        float numP=0.0;
+        int numO = rand()%3  + 4;
+        float numP= 8000/(rand()%3  + 7);
 
-        while(numO<4 || numP<7){
-            numO = rand()%7;
-            numP= rand()%10;
-        }
-        numP=6000/numP;
-
-        for(int i=0;i<numO;i++){
-            aux = new Entities::Obstacles::Meteor(CoordF((i*numP)+637.0f,565.0f));
+       for(int i=0;i<numO;i++){
+            aux = new Entities::Obstacles::Meteor(CoordF((i*numP)+637.0f, 590.0f));
             list_o.addEntity(static_cast<Entities::Entity*>(aux));
         }
         //printf("    EM createM    ");
@@ -93,7 +86,6 @@ LevelTwo::LevelTwo():
 
     void LevelTwo::start()
     {
-        //printf("    EM START    ");
         createP();
         createM();
         createR();

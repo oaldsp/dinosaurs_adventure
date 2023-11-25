@@ -16,7 +16,7 @@ dT(0.0f)
 
 	add(static_cast<State*>(new StartMenu(this)));
 
-	changeState(stateID::menu);
+	//changeState(stateID::menu);
 
 	exe();
 }
