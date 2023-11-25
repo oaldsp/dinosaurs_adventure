@@ -3,7 +3,7 @@
 
 StartMenu::StartMenu(Game* gameTemp): 
 Menu(CoordF(0.0f, 0.0f)), 
-State(static_cast<StateMachine*>(gameTemp), stateID::menu), 
+State(stateID::menu), 
 pGame(gameTemp){
 	Text* temp = NULL;
 	

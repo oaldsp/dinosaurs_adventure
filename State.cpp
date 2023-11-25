@@ -1,11 +1,22 @@
 #include "State.h"
 #include "StateMachine.h"//por causa do include bidirecional
+#include <cstddef>
 
-State::State(StateMachine* pMachiTemp, stateID idTemp):pMachi(pMachiTemp), id(idTemp){}
+StateMachine *State::pMachi(StateMachine::getInstance());
+
+State::State(stateID idTemp):id(idTemp)
+{
+	pMachi->add(this);
+}
 
 State::~State(){
 	pMachi =  NULL;
 }
+
+void State::set_StateMachine(StateMachine* pMachiTemp) 
+    {
+        pMachi = pMachiTemp;
+    }
 
 void State::changeState(stateID idTemp){
 	id = idTemp;
