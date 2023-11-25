@@ -10,39 +10,30 @@ namespace Entities{
 		}
 		
 		void Meteor::move(const float dT){
-			/*CoordF posTemp = this->getPos();
+			CoordF posTemp = this->getPos();
 			CoordF speedTemp = this->getSpeed();
 
-			float a = getG()  - (getK()*getSize().x*getSize().x*speedTemp.y*speedTemp.y)/(2*M_M);*/
-			/*
-				Formula da aceleracao considerando arasto
-					a = g - (K*x^2*v^2) /2m
-			 */
-				
-			/*time += dT;
+			float a = getG() - getN();
+			
+			setTime(getTime() + dT);			
 				
 			this->getShape()->updatePos(posTemp);	
-			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*time + a*time*time/2));*/
+			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*getTime() + a*getTime()*getTime()/2));
 			/*
 				USANDO FORMULA DE MRUV PARA DESLOCAMENTO EM Y
 				S=So+Vot+at^2/2
 			*/
-			
-			//this->setSpeedY(getSpeed().y + a* dT);//V = V0 + at (ATUALIZA VELOCIDADE PARA PROXIMA EXECUCAO)
 		}
 
 		void Meteor::start(){
 			this->getShape()->setTexture("texture/meteor.png");
+			this->setSpeedX(0.0f);
+			this->setSpeedY(0.0f);
 			this->setID(meteor);
 		}
 
 		void Meteor::collision(Entity* slamEntity, CoordF difference){
 			switch(slamEntity->getID()){
-			case ground:
-				//printf("bateu");
-				//time = 0.0f;//zero o tempo para o jump
-				//setSpeedY(0.0f);	
-				break;
 			default:
 				break;
 			}

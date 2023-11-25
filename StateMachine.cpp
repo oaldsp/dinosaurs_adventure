@@ -1,11 +1,15 @@
 #include "StateMachine.h"
 #include <iostream>
 
-StateMachine::StateMachine():id(unknown){}
+StateMachine::StateMachine():id(unknown){
+
+}
 
 StateMachine::~StateMachine(){
-	for(int i=0; i<2; i++)
-		delete states[i];
+	std::map<stateID, State*>::iterator it;
+
+	for(it = states.begin(); it != states.end(); it++)
+		delete (it->second);
 }
 
 void StateMachine::changeState(stateID idTemp){
@@ -28,4 +32,8 @@ void StateMachine::add(State* pState){
 		exit(1);
 	}
 	states[pState->getID()] = pState;
+}
+
+void StateMachine::plot(){
+	states[id]->plot();
 }

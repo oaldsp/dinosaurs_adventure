@@ -6,11 +6,14 @@ namespace Entities::Obstacles{
 
 	class Obstacle: public StaticEntity{
 	private:
-		static unsigned int ObstacleTotal;	
+		static unsigned int obstacleTotal;
+		static const float normal;	
 	public:
 		Obstacle(CoordF posTemp, CoordF sizeTemp);
-		~Obstacle() = default;
-		
+		~Obstacle();
+	
+		static float getN();
+
 		//metodos virtuais puros
 		virtual void move(const float dT) = 0; 
 		virtual void start() = 0;

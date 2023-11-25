@@ -1,5 +1,7 @@
 #include "Ente.h"
 
+Managers::GraphicsManager* Ente::pGrap  =  Managers::GraphicsManager::getInstance();
+
 Ente::Ente(CoordF posTemp):pos(posTemp), speed(CoordF(0.0f,0.0f)){}
 
 void Ente::setPos(CoordF posTemp){
@@ -36,4 +38,8 @@ ID Ente::getID() const{
 
 CoordF Ente::getSpeed() const{
 	return speed;
+}
+
+Managers::GraphicsManager* Ente::getGrap(){
+	return pGrap;
 }

@@ -9,12 +9,26 @@ namespace Entities{
 			start();
 		}
 
-		void Petroleum::move(float dT){
-			this->getShape()->updatePos(getPos());
+		void Petroleum::move(const float dT){
+			CoordF posTemp = this->getPos();
+			CoordF speedTemp = this->getSpeed();
+
+			float a = getG() - getN();
+						
+			setTime(getTime() + dT);
+				
+			this->getShape()->updatePos(posTemp);	
+			this->setPos(CoordF(posTemp.x + speedTemp.x*dT, posTemp.y + speedTemp.y*getTime() + a*getTime()*getTime()/2));
+			/*
+				USANDO FORMULA DE MRUV PARA DESLOCAMENTO EM Y
+				S=So+Vot+at^2/2
+			*/
 		}
 
 		void Petroleum::start(){
 			this->getShape()->setTexture("texture/petroleum.jpg");
+			this->setSpeedX(0.0f);
+			this->setSpeedY(0.0f);
 			this->setID(petroleum);
 		}
 

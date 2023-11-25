@@ -7,11 +7,11 @@ namespace Entities{
 
 		class Enemy: public Creature{
 		private:
-			static unsigned int EnemyTotal;
+			static unsigned int enemyTotal;
 		public:
 			Enemy(CoordF posTemp = CoordF(0.0f, 0.0f), CoordF sizeTemp = CoordF(0.0f, 0.0f)); 
 				
-			virtual ~Enemy() = default;
+			virtual ~Enemy();
 
 			void damage(const float damage);
 

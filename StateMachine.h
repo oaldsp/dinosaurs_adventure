@@ -1,13 +1,13 @@
 #pragma once
 
-#include <vector>
+#include <map>
 
 #include "State.h"
 
 class StateMachine{
 protected:
 	stateID id;
-	std::vector<State*> states;
+	std::map<stateID, State*> states;
 public:
 	StateMachine();
 	virtual ~StateMachine();
@@ -17,5 +17,5 @@ public:
 
 	stateID getID() const;
 	void add(State* pState);
-
+	void plot();
 };
