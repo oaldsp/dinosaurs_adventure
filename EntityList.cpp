@@ -46,4 +46,9 @@ namespace List{
 	{
 		return list[pos];
 	}
+
+	void EntityList::clear()
+	{
+		list.clear();
+	}
 }//final do namespace List

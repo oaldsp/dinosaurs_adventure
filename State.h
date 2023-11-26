@@ -4,19 +4,22 @@ class StateMachine;//por causa do include bidirecional
 
 enum stateID{
 	//Ao adicionar estados aumentar indice na destrutora do SateteMachine tb
-	unknown,
-	menu,
 	level1,
+	menu,
+	unknown,
 	level2
 };
 
 class State{
+protected:
+	static StateMachine* pMachi;
 private:
-	StateMachine* pMachi;
 	stateID id;
 public:
-	State(StateMachine* pMachiTemp = nullptr, stateID idTemp = unknown);
+	State(stateID idTemp);
 	virtual ~State();
+
+	void set_StateMachine(StateMachine* pMachiTemp);
 
 	void changeState(stateID idTemp);
 

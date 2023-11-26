@@ -3,9 +3,9 @@
 namespace Entities{
 	namespace Creature{
 
-		Chicken::Chicken(CoordF  posTemp, Projectile*  prctTemp):
+		Chicken::Chicken(CoordF  posTemp):
 		Enemy(posTemp, CoordF(CE_SIZE_X, CE_SIZE_Y)), 
-		cooldown(CE_CW), prct(prctTemp){	
+		cooldown(CE_CW), prct(NULL){	
 			start();	
 		}
 
@@ -39,10 +39,8 @@ namespace Entities{
 		}
 
 		void Chicken::start(){
+			prct = new Projectile(this);
 			this->getShape()->setTexture("texture/chicken.png");
-			//prct->getShape()->setTexture("texture/prctE.png");
-			//prct->getShape()->changeSize(CoordF(PE_SIZE_X, PE_SIZE_Y));//Muda no StaticAnimation
-			//prct->setSize(CoordF(PE_SIZE_X, PE_SIZE_Y));//Muda no Ente
 			this->setID(chicken);
 			this->setLife(CE_LIFE);
 			this->setSpeedX(CE_SPEED_X);
@@ -83,6 +81,10 @@ namespace Entities{
 
 		int Chicken::getAttribute() const{
 			return 1;
+		}
+
+		Projectile* Chicken::getPrct() const{
+			return prct;
 		}
 	}//Final do namespace Creature
 }//Final do namespace Entities

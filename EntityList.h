@@ -21,5 +21,6 @@ namespace List{
 		void move(const float dT);
 		unsigned int getSize();
 		Entity* operator[](unsigned int pos);
+		void clear();
 	}; 
 }//final do namespace List

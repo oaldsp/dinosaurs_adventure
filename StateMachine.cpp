@@ -1,13 +1,25 @@
 #include "StateMachine.h"
 #include <iostream>
 
-StateMachine::StateMachine():id(unknown){
+StateMachine* StateMachine::instance = nullptr;
+
+StateMachine* StateMachine::getInstance() 
+{
+    if (instance == nullptr) 
+    {
+        instance = new StateMachine();
+    }
+    return instance;
+}
+
+StateMachine::StateMachine():
+    id(menu)
+{
 
 }
 
 StateMachine::~StateMachine(){
 	std::map<stateID, State*>::iterator it;
-
 	for(it = states.begin(); it != states.end(); it++)
 		delete (it->second);
 }
@@ -18,6 +30,7 @@ void StateMachine::changeState(stateID idTemp){
 }
 
 void StateMachine::exe(const float dt){
+	//std::cout << states[id]<< '\n';
 	states[id]->move(dt);
 	states[id]->plot();
 }

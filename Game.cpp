@@ -2,27 +2,32 @@
 
 using namespace Managers;
 
-Game::Game():StateMachine(),
+Game::Game():
+pStateMachine(StateMachine::getInstance()),
 pEvents(EventsManager::getInstance()),
-pGrap(GraphicsManager::getInstance()), dT(0.0f){
+pGrap(GraphicsManager::getInstance()),
+level_one(),
+level_two()
+{
 	clk.restart();
 	
-	//ALOCAR LEVEIS AQUI
+	StartMenu* aux = new StartMenu(this);
+	add(static_cast<State*>(aux));
+	aux->addLevel(&level_one);
+	aux->addLevel(&level_two);
 
-	add(static_cast<State*>(new StartMenu(this)));
-
-	changeState(stateID::menu);
 	exe();
 }
 
+
 void Game::exe(){
 	while(pGrap->isWindowOpen()){
-		pEvents->libraryEvents();
+		dT = pGrap->updateDeltaTime();
 		pGrap->clear();
 
-		dT = pGrap->updateDeltaTime();
-			
-		this->plot();//plota estado atual
+		pEvents->libraryEvents();
+		
+		pStateMachine->exe(dT);
 
 		pGrap->display();
 	}

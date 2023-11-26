@@ -1,6 +1,6 @@
 #include "Ente.h"
 
-Managers::GraphicsManager* Ente::pGrap  =  Managers::GraphicsManager::getInstance();
+Managers::GraphicsManager* Ente::pGM = Managers::GraphicsManager::getInstance();
 
 Ente::Ente(CoordF posTemp):pos(posTemp), speed(CoordF(0.0f,0.0f)){}
 
@@ -41,5 +41,5 @@ CoordF Ente::getSpeed() const{
 }
 
 Managers::GraphicsManager* Ente::getGrap(){
-	return pGrap;
+	return pGM;
 }

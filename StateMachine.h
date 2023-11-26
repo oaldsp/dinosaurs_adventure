@@ -8,9 +8,12 @@ class StateMachine{
 protected:
 	stateID id;
 	std::map<stateID, State*> states;
+	static StateMachine* instance;
+ 	StateMachine();
 public:
-	StateMachine();
 	virtual ~StateMachine();
+
+	static StateMachine* getInstance();
 
 	void changeState(stateID idTemp);
 	void exe(const float dt);

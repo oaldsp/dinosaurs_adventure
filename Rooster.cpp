@@ -55,14 +55,19 @@ namespace Entities{
 				this->damage(10.0f);
 				break;
 			case ground:
+				if(difference.x >= difference.y)
+					setSpeedX(-getSpeed().x);
 				setTime(0.0f);//zero o tempo para o jump
 				moveAway(slamEntity,difference);
 				break;
 			case chick:
-				setSpeedX(2.5f*R_SPEED_X);
+				if(!protect)
+					setSpeedX(2.5f*getSpeed().x);
 				protect = true;
 				break;
 			case petroleum:
+				if((difference.x >= difference.y) && rand()%2)
+					setSpeedX(-getSpeed().x);
 				setTime(0.0f);//zero o tempo para o jump
 				moveAway(slamEntity,difference);
 				break;
