@@ -4,8 +4,8 @@ LevelTwo::LevelTwo():
     Level(level2),
     finish(0),
     background(CoordF(-384.0f - 300.0f, 0.0f), CoordF(3*1366.0f, 768.0f)),
-    pp1(&p1),
-    p1(CoordF(300.f,250.f), &pp1)
+    p1(NULL),
+    p2(NULL)
     {
         background.setTexture("texture/background.jpg");
         start();
@@ -18,15 +18,15 @@ LevelTwo::LevelTwo():
 
     void LevelTwo::move(const float dt)
     {
-        pGM->centerView(CoordF(p1.getPos().x, 384.0f));//tem que trocar para o player
+        pGM->centerView(CoordF(p1->getPos().x, 384.0f));//tem que trocar para o player
         list_c.move(dt);
         list_o.move(dt);
 
         collision_manager.collide();
-        background.updatePos(CoordF(p1.getPos().x-700.0f,0.0f));
+        background.updatePos(CoordF(p1->getPos().x-700.0f,0.0f));
 	
-	if(p1.getPos().x >= 7600.0f){
-		cout << "VOCE GANHOU" << endl;
+	if(p1->getPos().x >= 7600.0f){
+		cout << "VICTORY" << endl;
 		exit(1);
 	}	
     }
@@ -68,13 +68,24 @@ LevelTwo::LevelTwo():
             aux = new Entities::Obstacles::Meteor(CoordF((i*numP)+637.0f, 590.0f));
             list_o.addEntity(static_cast<Entities::Entity*>(aux));
         }
-        //printf("    EM createM    ");
     }
 
     void LevelTwo::createP()
     {
-        p1.getCtrl()->setKeys("W","A","D","S");
-        list_c.addEntity(static_cast<Entities::Entity*>(&p1));
+        p1 = new Entities::Creature::Player(CoordF(300.0f, 250.0f));
+	p1->getCtrl()->setKeys("W","A","D","S");
+	p1->getShape()->setTexture("texture/player1.png");
+        list_c.addEntity(static_cast<Entities::Entity*>(p1));
+	list_c.addEntity(static_cast<Entities::Entity*>(p1->getPrct()));
+    }
+     
+    void LevelTwo::createP2()
+    {
+        p2 = new Entities::Creature::Player(CoordF(300.0f, 250.0f));
+	p2->getCtrl()->setKeys("^","<",">","*");
+	p2->getShape()->setTexture("texture/player2.png");
+        list_c.addEntity(static_cast<Entities::Entity*>(p2));
+	list_c.addEntity(static_cast<Entities::Entity*>(p2->getPrct()));
     }
 
     void LevelTwo::reset()

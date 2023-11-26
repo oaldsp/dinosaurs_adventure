@@ -3,9 +3,9 @@
 namespace Entities{
 	namespace Creature{
 		
-		Player::Player(CoordF  posTemp, Projectile* prctTemp):
+		Player::Player(CoordF  posTemp):
 		Creature(posTemp, CoordF(P_SIZE_X,P_SIZE_Y)),
-		chao(true), ctrl(this), prct(prctTemp){			
+		chao(true), ctrl(this), prct(NULL){			
 			start();		
 		}
 
@@ -16,7 +16,7 @@ namespace Entities{
 		void Player::damage(const float damage){
 			setLife(getLife() - damage);
 			if(getLife() <= 0.0f){
-				cout << "VOCE PERDEU" << endl;
+				cout << "DEFEAT" << endl;
 				exit(1);
 			}	
 		}
@@ -48,10 +48,6 @@ namespace Entities{
 
 		void Player::start(){
 			prct = new Projectile(this);
-			this->getShape()->setTexture("texture/player.png");
-			prct->getShape()->setTexture("texture/prctP.png");
-			prct->getShape()->changeSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no StaticAnimation
-			prct->setSize(CoordF(PP_SIZE_X, PP_SIZE_Y));//Muda no Ente
 			this->setID(player);
 			this->setLife(P_LIFE);
 			stop();
@@ -60,14 +56,14 @@ namespace Entities{
 		void Player::collision(Entity* slamEntity, CoordF difference){
 			switch(slamEntity->getID()){ 
 			case chick:
-				this->damage(10.0f);
+				this->damage(20.0f);
 				break;
 			case projectile:
 				if(slamEntity != prct)
-					this->damage(10.0f);
+					this->damage(20.0f);
 				break;
 			case chicken:
-				this->damage(5.0f);
+				this->damage(10.0f);
 				break;
 			case rooster:
 				this->moveAway(slamEntity, difference);
@@ -110,8 +106,12 @@ namespace Entities{
 			return 1;
 		}
 
-		Pcontrol* Player::getCtrl(){
-			return &ctrl;
+		Pcontrol* Player::getCtrl() const{
+			return const_cast<Pcontrol*>(&ctrl);
+		}
+		
+		Projectile* Player::getPrct() const{
+			return prct;
 		}
 
 		void Player::jump(){

@@ -7,8 +7,8 @@ class LevelTwo : public Level
     private:
         int finish;
         StaticAnimation background;
-        Entities::Creature::Player p1;
-    	Entities::Projectile pp1;
+        Entities::Creature::Player* p1;
+	Entities::Creature::Player* p2;
     public:
         LevelTwo();
         ~LevelTwo();
@@ -18,6 +18,7 @@ class LevelTwo : public Level
         void reset();
 
         void createP();
+	void createP2();
         void createR();
         void createM();
 

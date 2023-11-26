@@ -21,7 +21,7 @@ namespace Entities{
 			float cooldown;
 		       	Projectile* prct; 	
 		public:
-			Chicken(CoordF posTemp = CoordF(0.0f, 0.0f), Projectile* prctTemp = NULL);
+			Chicken(CoordF posTemp = CoordF(0.0f, 0.0f));
 			~Chicken();
 
 			void move(const float dT);
@@ -29,6 +29,7 @@ namespace Entities{
 			void attack();
 			void collision(Entity* slamEntity, CoordF difference);
 			int getAttribute() const;
+			Projectile* getPrct() const;
 		};
 	}//Final do namespace Creature
 }//Final do namespace Entities

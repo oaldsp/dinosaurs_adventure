@@ -7,16 +7,14 @@ pStateMachine(StateMachine::getInstance()),
 pEvents(EventsManager::getInstance()),
 pGrap(GraphicsManager::getInstance()),
 level_one(),
-level_two(),
-dT(0.0f)
+level_two()
 {
 	clk.restart();
 	
-	//ALOCAR LEVEIS AQUI
-
-	add(static_cast<State*>(new StartMenu(this)));
-
-	//changeState(stateID::menu);
+	StartMenu* aux = new StartMenu(this);
+	add(static_cast<State*>(aux));
+	aux->addLevel(&level_one);
+	aux->addLevel(&level_two);
 
 	exe();
 }

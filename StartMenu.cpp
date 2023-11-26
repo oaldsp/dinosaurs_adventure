@@ -21,14 +21,21 @@ pGame(gameTemp){
 	temp = new Text(CoordF(50.0f, 350.0f), "2 - LEVEL 2");
 	VText.push_back(temp);
 	
-	temp = new Text(CoordF(50.0f, 450.0f), "3 - RANKING");
+	temp = new Text(CoordF(50.0f, 450.0f), "3 - TWO PLAYERS");
+	VText.push_back(temp);
+
+	temp = new Text(CoordF(50.0f, 550.0f), "4 - RANKING");
 	VText.push_back(temp);
 	
-	temp = new Text(CoordF(50.0f, 550.0f), "*press the number to be seleted*");
+	temp = new Text(CoordF(50.0f, 650.0f), "*press the number to be seleted*");
 	temp->setFSize(50);
 	VText.push_back(temp);
 
 	max = 4; 
+}
+
+void StartMenu::addLevel(Level* levelTemp){
+	levels.push_back(levelTemp);
 }
 
 void StartMenu::start(){
@@ -58,7 +65,9 @@ void StartMenu::op2(){
 }
 
 void StartMenu::op3(){
-	
+	int size = levels.size();
+	for(int i =0; i<size; i++)
+		levels.at(i)->createP2();	
 }
 
 void StartMenu::op4(){

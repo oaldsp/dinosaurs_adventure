@@ -61,7 +61,8 @@ namespace Entities{
 				moveAway(slamEntity,difference);
 				break;
 			case chick:
-				setSpeedX(2.5f*R_SPEED_X);
+				if(!protect)
+					setSpeedX(2.5f*getSpeed().x);
 				protect = true;
 				break;
 			case petroleum:

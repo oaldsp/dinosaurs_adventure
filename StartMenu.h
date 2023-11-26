@@ -1,16 +1,21 @@
 #pragma once 
 
 #include "Menu.h"
+#include "Level.h"
 #include "State.h"
+#include <vector>
 
 class Game;//por causa do include bidirecional
 
 class StartMenu: public State, public Menu{
 private:
 	Game* pGame;
+	vector<Level*> levels;
 public:
 	StartMenu(Game* gameTemp = NULL);
 	~StartMenu() = default;
+
+	void addLevel(Level* levelTemp);
 
 	//heranca do state
 	void start();

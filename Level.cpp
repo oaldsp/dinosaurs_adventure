@@ -54,13 +54,6 @@
         float nextPos = 8000/(rand()%10 + 5);
         int numE = rand()%4 + 6;
 
-        /*while(numE<4 && nextPos<5){
-            numE = rand()%8;
-            nextPos = rand()%15;
-        }
-
-        nextPos=5000/nextPos;*/
-
         for(int i=0;i<numE;i++){
             aux = new Entities::Creature::Chick(CoordF((i*nextPos) + 371.0f + rand()%10, 300.f));
             add_enemy(static_cast<Entities::Entity*>(aux));
@@ -82,7 +75,7 @@
         }
         
         numO= rand()%2 + 7;
-        nPos= 8000/(rand()%5 + 5);
+        nPos= 8000/(rand()%5 + 4);
         
         /*while(numO<5 || nPos<5.0){
             numO = rand()%7;

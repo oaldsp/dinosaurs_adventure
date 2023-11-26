@@ -24,7 +24,6 @@
 class Level: public Ente, public State
     {
     protected:
-
         List::EntityList list_o;
         List::EntityList list_c;
         
@@ -32,9 +31,10 @@ class Level: public Ente, public State
         EventsManager* events_manager;
         
         sf::RectangleShape body;
+
     public:
         Level(stateID id);
-        ~Level();
+        ~Level(); 
         void draw();
 
         void add_enemy(Entities::Entity* enemy);
@@ -43,4 +43,6 @@ class Level: public Ente, public State
 
         void create_enemy();
         void create_scenario();
+
+	virtual void createP2() = 0;
     };

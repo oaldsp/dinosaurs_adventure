@@ -24,7 +24,7 @@ namespace Entities{
 			Pcontrol ctrl;
 			Projectile* prct;	
 		public:
-			Player(CoordF posTemp = CoordF(0.0f, 0.0f), Projectile*  prctTemp = NULL);
+			Player(CoordF posTemp = CoordF(0.0f, 0.0f));
 			~Player();
 			
 			void damage(const float damage);
@@ -34,7 +34,8 @@ namespace Entities{
 			void repel(Entity* slamEntity);
 			int getAttribute() const;
 
-			Pcontrol* getCtrl();
+			Pcontrol* getCtrl() const;
+			Projectile* getPrct() const;
 
 			void jump();
 			void left();
