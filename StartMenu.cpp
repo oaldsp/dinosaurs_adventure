@@ -53,7 +53,7 @@ void StartMenu::plot(){
 }
 
 void StartMenu::reset(){
-
+	pGM->closeWindow();
 }
 
 void StartMenu::op1(){

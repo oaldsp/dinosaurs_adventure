@@ -3,11 +3,11 @@
 LevelTwo::LevelTwo():
     Level(level2),
     finish(0),
-    background(CoordF(-384.0f - 300.0f, 0.0f), CoordF(3*1366.0f, 768.0f)),
+    background(CoordF(0.0f, 0.0f), CoordF(1380.0f, 768.0f)),
     p1(NULL),
     p2(NULL)
     {
-        background.setTexture("texture/background.jpg");
+        background.setTexture("texture/background4.png");
         start();
     }
 

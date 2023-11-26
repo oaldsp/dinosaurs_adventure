@@ -20,7 +20,8 @@ Input::Input(){
 	keysMap[sf::Keyboard::Num2] = "2";
 	keysMap[sf::Keyboard::Num3] = "3";
 	keysMap[sf::Keyboard::Num4] = "4";
-
+	
+	keysMap[sf::Keyboard::Escape] = "esc";
 }
 
 Input::~Input(){

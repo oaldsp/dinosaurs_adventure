@@ -8,7 +8,7 @@
 
 int main()
 {
-	Game name_of_game;
+	Game dinosaurs_adventure;
 	
 	return 0;
 }

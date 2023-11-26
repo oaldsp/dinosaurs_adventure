@@ -22,4 +22,5 @@ public:
 	virtual void op2() = 0;
 	virtual void op3() = 0;
 	virtual void op4() = 0;
+	virtual void reset() = 0;
 };

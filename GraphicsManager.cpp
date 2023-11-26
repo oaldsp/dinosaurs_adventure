@@ -25,7 +25,7 @@ namespace Managers {
     }
 
     GraphicsManager::GraphicsManager() :
-    window(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "DINOSAUR'S ADVENTURE", /*sf::Style::Titlebar |*/ sf::Style::/*Fullscreen*/Default | sf::Style::Close)),
+    window(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "DINOSAUR'S ADVENTURE", /*sf::Style::Titlebar |*/ sf::Style::Fullscreen | sf::Style::Close)),
     view(sf::Vector2f(WIDTH / 2, HEIGHT / 2), sf::Vector2f(WIDTH, HEIGHT)),
     texturesMap(),
     fontsMap() { }

@@ -28,7 +28,7 @@ class Level: public Ente, public State
         List::EntityList list_c;
         
         Managers::CollisionManager collision_manager;
-        EventsManager* events_manager;
+	Managers::EventsManager* events_manager;
         
         sf::RectangleShape body;
 

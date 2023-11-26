@@ -21,6 +21,8 @@ void Mcontrol::pressed(std::string keyTemp){
 		pMenu->op3();
 	}if(keyTemp == op4){
 		pMenu->op4();
+	}if(keyTemp == "esc"){
+		pMenu->reset();
 	}
 }
 

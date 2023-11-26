@@ -8,7 +8,7 @@
     collision_manager(&list_c,&list_o),
     body()
     {    
-        events_manager = EventsManager::getInstance();
+        events_manager = Managers::EventsManager::getInstance();
         create_enemy();
         create_scenario();
     }
@@ -65,7 +65,7 @@
         Entities::Entity* aux = nullptr;
         std::srand(std::time(NULL)); //aleatorio
 
-        int numO = 13;
+        int numO = 14;
         float nPos = 0.0;
        
        //chao	
@@ -77,21 +77,14 @@
         numO= rand()%2 + 7;
         nPos= 8000/(rand()%5 + 4);
         
-        /*while(numO<5 || nPos<5.0){
-            numO = rand()%7;
-            nPos = rand()%10;
-        }
-        
-        nPos = 8000/nPos;*/
-        
-	//parede
+        //parede
         for(int i=0;i<numO;i++){
-            aux = new Entities::Obstacles::Ground(CoordF((i*nPos) + rand()%10, 195.0f), CoordF(50.0f,400.0f));
+            aux = new Entities::Obstacles::Ground(CoordF((i*nPos) + rand()%10, 195.0f), CoordF(50.0f,410.0f));
             add_obstacle(static_cast<Entities::Entity*>(aux));
         }
 	
 	//Para não cair no final do mapa
-	aux = new Entities::Obstacles::Ground(CoordF(7740.0f + rand()%10, 195.0f), CoordF(50.0f,400.0f));
+	aux = new Entities::Obstacles::Ground(CoordF(8340.0f + rand()%10, 195.0f), CoordF(50.0f,410.0f));
         add_obstacle(static_cast<Entities::Entity*>(aux));
 
     }

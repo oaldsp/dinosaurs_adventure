@@ -14,9 +14,9 @@ private:
 	LevelOne level_one;
 	LevelTwo level_two;
 	
-	EventsManager* pEvents;
 	StateMachine* pStateMachine;
-
+	
+	Managers::EventsManager* pEvents;
 	Managers::GraphicsManager* pGrap; 	
 
 	sf::Clock clk;
