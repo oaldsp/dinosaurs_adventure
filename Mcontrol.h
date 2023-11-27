@@ -7,10 +7,10 @@ class Menu;//por causa do include bidirecional
 class Mcontrol: public Observer{
 private:
 	Menu* pMenu;
-	std::string op1;
-	std::string op2;
-	std::string op3;
-	std::string op4;
+	const std::string op1;
+	const std::string op2;
+	const  std::string op3;
+	const std::string op4;
 public:
 	Mcontrol(Menu* pMenuTemp = NULL);
 	~Mcontrol();

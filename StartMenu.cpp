@@ -34,7 +34,7 @@ pGame(gameTemp){
 	max = 4; 
 }
 
-void StartMenu::addLevel(Level* levelTemp){
+void StartMenu::addLevel(Levels::Level* levelTemp){
 	levels.push_back(levelTemp);
 }
 

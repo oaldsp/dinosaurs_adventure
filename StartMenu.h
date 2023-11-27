@@ -10,12 +10,12 @@ class Game;//por causa do include bidirecional
 class StartMenu: public State, public Menu{
 private:
 	Game* pGame;
-	vector<Level*> levels;
+	vector<Levels::Level*> levels;
 public:
 	StartMenu(Game* gameTemp = NULL);
 	~StartMenu() = default;
 
-	void addLevel(Level* levelTemp);
+	void addLevel(Levels::Level* levelTemp);
 
 	//heranca do state
 	void start();

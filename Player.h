@@ -21,7 +21,7 @@ namespace Entities{
 		class Player: public Creature{
 		private:
 			bool chao;//flag para saber se esta no chao
-			Pcontrol ctrl;
+			const Pcontrol ctrl;
 			Projectile* prct;	
 		public:
 			Player(CoordF posTemp = CoordF(0.0f, 0.0f));

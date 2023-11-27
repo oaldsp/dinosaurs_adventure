@@ -11,8 +11,8 @@
 
 class Game: public StateMachine{
 private:
-	LevelOne level_one;
-	LevelTwo level_two;
+	Levels::LevelOne level_one;
+	Levels::LevelTwo level_two;
 	
 	StateMachine* pStateMachine;
 	

@@ -21,28 +21,31 @@
 #include <string>
 #include <iostream>
 
-class Level: public Ente, public State
-    {
-    protected:
-        List::EntityList list_o;
-        List::EntityList list_c;
-        
-        Managers::CollisionManager collision_manager;
-	Managers::EventsManager* events_manager;
-        
-        sf::RectangleShape body;
+namespace Levels{
 
-    public:
-        Level(stateID id);
-        ~Level(); 
-        void draw();
+	class Level: public Ente, public State
+	    {
+	    protected:
+		List::EntityList list_o;
+		List::EntityList list_c;
+		
+		Managers::CollisionManager collision_manager;
+		Managers::EventsManager* events_manager;
+		
+		sf::RectangleShape body;
 
-        void add_enemy(Entities::Entity* enemy);
-        void add_obstacle(Entities::Entity* obstacle);
-        void add_player(Entities::Entity* player);
+	    public:
+		Level(stateID id);
+		~Level(); 
+		void draw();
 
-        void create_enemy();
-        void create_scenario();
+		void add_enemy(Entities::Entity* enemy);
+		void add_obstacle(Entities::Entity* obstacle);
+		void add_player(Entities::Entity* player);
 
-	virtual void createP2() = 0;
-    };
+		void create_enemy();
+		void create_scenario();
+
+		virtual void createP2() = 0;
+	    };
+}//Final do namespace Levels

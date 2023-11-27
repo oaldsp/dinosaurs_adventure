@@ -18,10 +18,6 @@ void State::set_StateMachine(StateMachine* pMachiTemp)
         pMachi = pMachiTemp;
     }
 
-void State::changeState(stateID idTemp){
-	id = idTemp;
-}
-
-stateID State::getID() const{
+const stateID State::getID() const{
 	return id;
 }

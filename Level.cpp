@@ -1,5 +1,7 @@
 #include "Level.h"
 
+namespace Levels{
+
     Level::Level(stateID id):
     Ente(CoordF(0.0f, 0.0f)),//tirar posicao da construtora da Ente pq n faz sentido por no level ?
     State(id),
@@ -88,3 +90,4 @@
         add_obstacle(static_cast<Entities::Entity*>(aux));
 
     }
+}//FInal do namespace Levels

@@ -14,16 +14,14 @@ class State{
 protected:
 	static StateMachine* pMachi;
 private:
-	stateID id;
+	const stateID id;
 public:
 	State(stateID idTemp);
 	virtual ~State();
 
 	void set_StateMachine(StateMachine* pMachiTemp);
 
-	void changeState(stateID idTemp);
-
-	stateID getID() const;
+	const stateID getID() const;
 
 	virtual void move(const float dt)  = 0;
 	virtual void plot()  = 0;
